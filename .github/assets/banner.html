@@ -1,0 +1,284 @@
+<!doctype html>
+<!--
+  Source for banner.png (the README header). Re-render with:
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+    --force-device-scale-factor=2 --window-size=1280,440 --default-background-color=00000000 \
+    --virtual-time-budget=8000 --screenshot=.github/assets/banner.png "file://$PWD/.github/assets/banner.html"
+  Colours are the Vinyl UI tokens (packages/tokens/src/tokens.ts).
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=VT323&family=Space+Grotesk:wght@500;700&display=block"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --night: #0b0b1e;
+        --ultraviolet: #7b2cbf;
+        --magenta: #ff2e97;
+        --cyan: #00e5ff;
+        --orange: #ff6b35;
+        --yellow: #ffd23f;
+        --blue: #3d63ff;
+        --cream: #f4ebd9;
+        --sunset: linear-gradient(135deg, var(--magenta), var(--orange), var(--yellow));
+        --vice: linear-gradient(180deg, var(--yellow), var(--orange), var(--magenta), var(--ultraviolet), var(--blue));
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        width: 1280px;
+        height: 440px;
+        background: transparent;
+        overflow: hidden;
+      }
+      .banner {
+        position: relative;
+        width: 1280px;
+        height: 440px;
+        border-radius: 20px;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #07071a 0%, #150b33 42%, #3a0f5e 64%, var(--night) 64%);
+        isolation: isolate;
+      }
+
+      /* Stars */
+      .stars {
+        position: absolute;
+        inset: 0 0 36% 0;
+        background-image:
+          radial-gradient(1.5px 1.5px at 6% 18%, #fff8 50%, transparent 51%),
+          radial-gradient(1px 1px at 14% 42%, #fff6 50%, transparent 51%),
+          radial-gradient(1.5px 1.5px at 31% 12%, #fff9 50%, transparent 51%),
+          radial-gradient(1px 1px at 47% 30%, #fff5 50%, transparent 51%),
+          radial-gradient(2px 2px at 58% 9%, #fffa 50%, transparent 51%),
+          radial-gradient(1px 1px at 66% 36%, #fff6 50%, transparent 51%),
+          radial-gradient(1.5px 1.5px at 89% 14%, #fff9 50%, transparent 51%),
+          radial-gradient(1px 1px at 95% 40%, #fff6 50%, transparent 51%),
+          radial-gradient(1px 1px at 40% 50%, #fff4 50%, transparent 51%);
+      }
+
+      /* Outrun sun with slits that widen toward the horizon */
+      .sun {
+        position: absolute;
+        left: 900px;
+        top: 56px;
+        width: 310px;
+        height: 310px;
+        border-radius: 50%;
+        background: linear-gradient(to bottom, var(--yellow) 8%, var(--orange) 45%, var(--magenta) 78%);
+        filter: drop-shadow(0 0 40px #ff2e9799);
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          #000 0 50%,
+          transparent 50% 52.5%,
+          #000 52.5% 58%,
+          transparent 58% 61.5%,
+          #000 61.5% 66%,
+          transparent 66% 70.5%,
+          #000 70.5% 74%,
+          transparent 74% 79.5%,
+          #000 79.5% 82%,
+          transparent 82%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          #000 0 50%,
+          transparent 50% 52.5%,
+          #000 52.5% 58%,
+          transparent 58% 61.5%,
+          #000 61.5% 66%,
+          transparent 66% 70.5%,
+          #000 70.5% 74%,
+          transparent 74% 79.5%,
+          #000 79.5% 82%,
+          transparent 82%
+        );
+      }
+
+      /* Neon perspective grid floor */
+      .floor {
+        position: absolute;
+        left: -40%;
+        right: -40%;
+        top: 64%;
+        height: 520px;
+        transform-origin: top center;
+        transform: perspective(260px) rotateX(62deg);
+        background-image:
+          linear-gradient(var(--magenta) 2px, transparent 2px),
+          linear-gradient(90deg, var(--magenta) 2px, transparent 2px);
+        background-size: 64px 40px;
+        background-position: center top;
+        filter: drop-shadow(0 0 4px var(--magenta));
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 22%);
+        opacity: 0.85;
+      }
+      .horizon {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(64% - 1px);
+        height: 2px;
+        background: var(--cyan);
+        box-shadow: 0 0 14px 2px var(--cyan);
+      }
+
+      /* Lockup */
+      .lockup {
+        position: absolute;
+        left: 60px;
+        top: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+      .tile {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 18px;
+        border: 3px solid var(--yellow);
+        background: var(--sunset);
+        box-shadow:
+          0 0 0 1px var(--yellow),
+          0 0 28px var(--yellow),
+          inset 0 0 18px #ffffff66;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        font: italic 900 84px/1 "Orbitron", sans-serif;
+        color: var(--night);
+      }
+      .tile::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(105deg, transparent 38%, #ffffffa0 50%, transparent 62%);
+        transform: translateX(-22%);
+      }
+      .word {
+        display: flex;
+        align-items: baseline;
+        gap: 18px;
+        font: italic 900 112px/0.9 "Orbitron", sans-serif;
+        letter-spacing: -3px;
+      }
+      .vinyl {
+        color: var(--cream);
+        text-shadow:
+          -5px 0 #ff0055,
+          5px 0 #00b8ff,
+          0 0 30px #ff2e9766;
+      }
+      .ui {
+        padding-right: 0.18em;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        background: var(--vice);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 11px, transparent 11px 16px);
+        mask-image: repeating-linear-gradient(to bottom, #000 0 11px, transparent 11px 16px);
+        filter: drop-shadow(0 0 10px #ff2e9780);
+      }
+      .tagline {
+        font: 400 34px/1 "VT323", monospace;
+        letter-spacing: 3px;
+        color: var(--cyan);
+        text-shadow: 0 0 10px #00e5ffaa;
+        text-transform: uppercase;
+      }
+      .chips {
+        display: flex;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      .chip {
+        font: 700 15px/1 "Space Grotesk", sans-serif;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--cream);
+        padding: 9px 13px;
+        border: 2px solid var(--cream);
+        border-radius: 4px;
+        background: #0b0b1ecc;
+        box-shadow: 4px 4px 0 var(--magenta);
+      }
+
+      /* CRT finish */
+      .scanlines {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        pointer-events: none;
+        background: repeating-linear-gradient(to bottom, transparent 0 2px, #00000038 2px 3px);
+      }
+      .burn {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        pointer-events: none;
+        mix-blend-mode: screen;
+        background:
+          radial-gradient(38% 60% at 0% 100%, #ff7a1acc, transparent 70%),
+          radial-gradient(24% 36% at 100% 0%, #ff2e9766, transparent 70%);
+      }
+      .bars {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 10px;
+        z-index: 6;
+        display: flex;
+      }
+      .bars span {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="banner">
+      <div class="stars"></div>
+      <div class="sun"></div>
+      <div class="floor"></div>
+      <div class="horizon"></div>
+
+      <div class="lockup">
+        <div class="row">
+          <div class="tile">V</div>
+          <div class="word"><span class="vinyl">VINYL</span><span class="ui">UI</span></div>
+        </div>
+        <div class="tagline">An 80s design system · React + React Native</div>
+        <div class="chips">
+          <span class="chip">Tailwind v4</span>
+          <span class="chip">shadcn/ui</span>
+          <span class="chip">Uniwind</span>
+          <span class="chip">MIT</span>
+        </div>
+      </div>
+
+      <div class="burn"></div>
+      <div class="scanlines"></div>
+      <div class="bars">
+        <span style="background: #c0c0c0"></span><span style="background: #c0c000"></span
+        ><span style="background: #00c0c0"></span><span style="background: #00c000"></span
+        ><span style="background: #c000c0"></span><span style="background: #c00000"></span
+        ><span style="background: #0000c0"></span>
+      </div>
+    </div>
+  </body>
+</html>

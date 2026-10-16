@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1008" height="150" viewBox="0 0 1008 150" role="img" aria-label="Vinyl UI palette">
+<rect width="1008" height="150" rx="14" fill="#0B0B1E"/><rect x="24" y="24" width="80" height="64" rx="4" fill="#0B0B1E" stroke="#F4EBD9" stroke-opacity="0.5" stroke-width="2"/>
+<text x="64" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">night</text>
+<text x="64" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#0B0B1E</text><rect x="112" y="24" width="80" height="64" rx="4" fill="#3A3558" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="152" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">dusk</text>
+<text x="152" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#3A3558</text><rect x="200" y="24" width="80" height="64" rx="4" fill="#7B2CBF" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="240" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">ultraviolet</text>
+<text x="240" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#7B2CBF</text><rect x="288" y="24" width="80" height="64" rx="4" fill="#FF2E97" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="328" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">magenta</text>
+<text x="328" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#FF2E97</text><rect x="376" y="24" width="80" height="64" rx="4" fill="#00E5FF" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="416" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">cyan</text>
+<text x="416" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#00E5FF</text><rect x="464" y="24" width="80" height="64" rx="4" fill="#FF6B35" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="504" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">orange</text>
+<text x="504" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#FF6B35</text><rect x="552" y="24" width="80" height="64" rx="4" fill="#FFD23F" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="592" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">yellow</text>
+<text x="592" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#FFD23F</text><rect x="640" y="24" width="80" height="64" rx="4" fill="#2DE2A6" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="680" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">mint</text>
+<text x="680" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#2DE2A6</text><rect x="728" y="24" width="80" height="64" rx="4" fill="#FF3B3B" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="768" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">laser</text>
+<text x="768" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#FF3B3B</text><rect x="816" y="24" width="80" height="64" rx="4" fill="#3D63FF" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="856" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">blue</text>
+<text x="856" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#3D63FF</text><rect x="904" y="24" width="80" height="64" rx="4" fill="#F4EBD9" stroke="#F4EBD9" stroke-opacity="0" stroke-width="2"/>
+<text x="944" y="110" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="12" font-weight="700" fill="#F4EBD9">cream</text>
+<text x="944" y="128" text-anchor="middle" font-family="ui-monospace,SFMono-Regular,Menlo,monospace" font-size="11" fill="#A2A3B1">#F4EBD9</text></svg>
