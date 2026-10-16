@@ -33,7 +33,7 @@
 | **A1** | [Quick start (web)](#web) | shadcn CLI, one theme, any component |
 | **A2** | [Quick start (React Native)](#react-native) | Expo + Uniwind, same CLI |
 | **B1** | [Effects](#-side-b--effects) | RGB split, film burn, scanlines, SMPTE wipes, neon draw, shine, stripe text |
-| **B2** | [Components](#-components) | 30 shadcn/ui components restyled, plus 4 Vinyl originals |
+| **B2** | [Components](#-components) | 29 shadcn/ui components restyled, plus 4 Vinyl originals |
 | **B3** | [Palette](#-palette) | Night Drive & Sun-Faded themes, AA-checked |
 | **Bonus** | [Liner notes](#-liner-notes) · [Packages](#-packages) · [Development](#-development) | |
 

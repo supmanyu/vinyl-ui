@@ -1,0 +1,271 @@
+/*
+ * Landing hero: an outrun road travelling toward the viewer.
+ * The floor is a perspective grid whose horizontal lines scroll forward; on load it unrolls from
+ * the horizon (--road-reveal) and fades in while the sun rises. Static under reduced motion.
+ */
+
+@property --road-reveal {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 130%;
+}
+
+.road-hero {
+  --horizon: 64%;
+  --cell: 52px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: max(820px, calc(100svh - 3.5rem));
+  background: linear-gradient(
+    to bottom,
+    #06061a 0%,
+    #0f0a2b 38%,
+    #2b0d4c calc(var(--horizon) - 2%),
+    #45115e var(--horizon),
+    var(--color-night) var(--horizon)
+  );
+}
+
+.road-stars {
+  position: absolute;
+  inset: 0 0 calc(100% - var(--horizon)) 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 7% 22%, #fff9 50%, transparent 51%),
+    radial-gradient(1px 1px at 16% 48%, #fff6 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 27% 14%, #fffa 50%, transparent 51%),
+    radial-gradient(1px 1px at 38% 36%, #fff5 50%, transparent 51%),
+    radial-gradient(1px 1px at 61% 18%, #fff7 50%, transparent 51%),
+    radial-gradient(2px 2px at 73% 9%, #fffb 50%, transparent 51%),
+    radial-gradient(1px 1px at 82% 40%, #fff5 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 93% 24%, #fff9 50%, transparent 51%);
+  opacity: 0;
+  animation: road-fade 2.5s ease-out 0.2s forwards;
+}
+
+.road-sun {
+  position: absolute;
+  left: 50%;
+  top: var(--horizon);
+  width: clamp(180px, 26vw, 360px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(
+    to bottom,
+    var(--color-yellow),
+    var(--color-orange) 48%,
+    var(--color-magenta) 90%
+  );
+  box-shadow: 0 0 120px 10px #ff2e9744;
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0 52%,
+    transparent 52% 55%,
+    #000 55% 62%,
+    transparent 62% 66.5%,
+    #000 66.5% 72%,
+    transparent 72% 78%,
+    #000 78% 82%,
+    transparent 82%
+  );
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: road-sunrise 3.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+/* The floor hides the lower half of the sun and holds the perspective grid. */
+.road-floor-wrap {
+  position: absolute;
+  inset: var(--horizon) 0 0 0;
+  overflow: hidden;
+  background: var(--color-night);
+  perspective: 260px;
+  perspective-origin: 50% 0%;
+}
+
+.road-floor {
+  position: absolute;
+  top: 0;
+  left: -150%;
+  right: -150%;
+  height: 220%;
+  transform-origin: top center;
+  transform: rotateX(74deg);
+  background-image:
+    /* cyan road shoulders */
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 159px),
+      var(--color-cyan) calc(50% - 159px) calc(50% - 155px),
+      #00e5ff12 calc(50% - 155px) calc(50% + 155px),
+      var(--color-cyan) calc(50% + 155px) calc(50% + 159px),
+      transparent calc(50% + 159px)
+    ),
+    /* grid */ linear-gradient(#ff2e97bb 1.5px, transparent 1.5px),
+    linear-gradient(90deg, #ff2e9788 1.5px, transparent 1.5px);
+  background-size:
+    100% 100%,
+    100% var(--cell),
+    var(--cell) 100%;
+  background-position:
+    center,
+    center 0,
+    calc(50% - 1px) 0;
+  mask-image: linear-gradient(
+    to bottom,
+    #000 calc(var(--road-reveal) - 30%),
+    transparent var(--road-reveal)
+  );
+  opacity: 0;
+  animation:
+    road-travel 0.9s linear infinite,
+    road-unroll 3.6s cubic-bezier(0.33, 0, 0.2, 1) 0.6s forwards;
+}
+
+/* Dashed centre lines, scrolling at the same speed as the grid. */
+.road-lane {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 5px;
+  translate: -50% 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    #f4ebd9cc 0 calc(var(--cell) * 0.8),
+    transparent 0 calc(var(--cell) * 2)
+  );
+  background-size: 100% calc(var(--cell) * 2);
+  animation: road-lane 1.8s linear infinite;
+}
+
+/* Haze that hides the vanishing point and glows along the horizon. */
+.road-haze {
+  position: absolute;
+  inset: var(--horizon) 0 0 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, #45115e 0%, #0b0b1ecc 6%, transparent 24%),
+    linear-gradient(to top, var(--color-night) 0%, transparent 30%);
+}
+.road-horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--horizon);
+  height: 2px;
+  background: var(--color-cyan);
+  box-shadow: 0 0 18px 2px var(--color-cyan);
+  opacity: 0;
+  animation: road-fade 1.4s ease-out 0.3s forwards;
+}
+
+.road-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(to bottom, transparent 0 2px, #0000002e 2px 3px);
+}
+
+.road-sign {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  z-index: 10;
+  width: min(30rem, calc(100% - 3rem));
+  translate: -50% 0;
+  opacity: 0;
+  animation: road-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.6s forwards;
+}
+
+.road-content > * {
+  opacity: 0;
+  animation: road-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.road-content > :nth-child(1) {
+  animation-delay: 1.4s;
+}
+.road-content > :nth-child(2) {
+  animation-delay: 1.55s;
+}
+.road-content > :nth-child(3) {
+  animation-delay: 1.75s;
+}
+.road-content > :nth-child(4) {
+  animation-delay: 1.95s;
+}
+.road-content > :nth-child(5) {
+  animation-delay: 2.15s;
+}
+
+@keyframes road-fade {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes road-sunrise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -22%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+@keyframes road-unroll {
+  from {
+    opacity: 0;
+    --road-reveal: 0%;
+  }
+  to {
+    opacity: 1;
+    --road-reveal: 130%;
+  }
+}
+@keyframes road-travel {
+  to {
+    background-position:
+      center,
+      center var(--cell),
+      calc(50% - 1px) 0;
+  }
+}
+@keyframes road-lane {
+  to {
+    background-position: 0 calc(var(--cell) * 2);
+  }
+}
+@keyframes road-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .road-stars,
+  .road-sun,
+  .road-floor,
+  .road-lane,
+  .road-horizon,
+  .road-sign {
+    position: absolute;
+    left: 50%;
+    bottom: 7%;
+    z-index: 10;
+    width: min(30rem, calc(100% - 3rem));
+    translate: -50% 0;
+    opacity: 0;
+    animation: road-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 2.6s forwards;
+  }
+
+  .road-content > * {
+    animation: none;
+    opacity: 1;
+  }
+}
