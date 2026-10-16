@@ -1,0 +1,53 @@
+---
+title: Dropdown Menu
+description: Menu of actions triggered by a button.
+---
+
+<Preview name="dropdown-menu" />
+
+**Vinyl styling:** Retro-shadow panel that opens with a quick barn-door wipe.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/dropdown-menu
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger asChild><Button variant="outline">Deck options</Button></DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>Playback</DropdownMenuLabel>
+    <DropdownMenuCheckboxItem checked>Dolby NR</DropdownMenuCheckboxItem>
+    <DropdownMenuItem>Clean heads</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger asChild><Button variant="outline"><Text>Deck options</Text></Button></DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>Playback</DropdownMenuLabel>
+    <DropdownMenuCheckboxItem checked={nr} onCheckedChange={setNr}><Text>Dolby NR</Text></DropdownMenuCheckboxItem>
+    <DropdownMenuItem><Text>Clean heads</Text></DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Dropdown Menu](https://ui.shadcn.com/docs/components/dropdown-menu) on the web, and React Native Reusables' [Dropdown Menu](https://reactnativereusables.com/docs/components/dropdown-menu) on native. Vinyl only changes styling and motion.

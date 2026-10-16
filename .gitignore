@@ -1,0 +1,14 @@
+node_modules
+dist
+.next
+.source
+.turbo
+.expo
+ios
+android
+*.tsbuildinfo
+.DS_Store
+apps/docs/public/r
+apps/docs/out
+.wrangler
+next-env.d.ts

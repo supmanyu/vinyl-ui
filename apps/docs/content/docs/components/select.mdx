@@ -1,0 +1,49 @@
+---
+title: Select
+description: Pick a value from a list.
+---
+
+<Preview name="select" />
+
+**Vinyl styling:** Cyan focus border; retro-shadow list panel.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/select
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Select>
+  <SelectTrigger><SelectValue placeholder="Pick a station" /></SelectTrigger>
+  <SelectContent>
+    <SelectItem value="886">88.6 Night Drive</SelectItem>
+  </SelectContent>
+</Select>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Select>
+  <SelectTrigger><SelectValue placeholder="Pick a station" /></SelectTrigger>
+  <SelectContent>
+    <SelectItem label="88.6 Night Drive" value="886" />
+  </SelectContent>
+</Select>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Select](https://ui.shadcn.com/docs/components/select) on the web, and React Native Reusables' [Select](https://reactnativereusables.com/docs/components/select) on native. Vinyl only changes styling and motion.

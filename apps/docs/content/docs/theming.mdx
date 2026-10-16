@@ -1,0 +1,92 @@
+---
+title: Theming
+description: The 80s palette, the two themes and how to make them your own.
+---
+
+All values come from one file, `packages/tokens/src/tokens.ts`. A build step turns it into Tailwind v4
+CSS for the web, Uniwind CSS for React Native, JS for animation code, and the shadcn `theme` registry item.
+
+## Palette
+
+Eleven signature colours, each with a `50–950` ramp generated in OKLCH. Use them as normal Tailwind
+colours: `bg-magenta`, `text-cyan-300`, `border-ultraviolet-700`.
+
+<Palette />
+
+| Name | Hex | Role |
+| --- | --- | --- |
+| `night` | `#0B0B1E` | Dark background |
+| `dusk` | `#3A3558` | Neutral greys (night-sky violet) |
+| `ultraviolet` | `#7B2CBF` | Accent, light-mode secondary |
+| `magenta` | `#FF2E97` | Primary |
+| `cyan` | `#00E5FF` | Secondary, focus ring |
+| `orange` | `#FF6B35` | Charts, warmth |
+| `yellow` | `#FFD23F` | Charts, highlights |
+| `mint` | `#2DE2A6` | Charts, success |
+| `laser` | `#FF3B3B` | Destructive |
+| `blue` | `#3D63FF` | Cool end of the vice gradient, wordmarks |
+| `cream` | `#F4EBD9` | Light background, dark foreground |
+
+## Themes
+
+| | Web | React Native |
+| --- | --- | --- |
+| **Night Drive** (dark, recommended default) | `.dark` on an ancestor | `Uniwind.setTheme('dark')` |
+| **Sun-Faded** (light) | `:root` | `Uniwind.setTheme('light')` |
+
+Semantic tokens use the shadcn/ui names, so any shadcn or React Native Reusables component picks up
+the theme without changes.
+
+<TokenTable />
+
+## Gradients
+
+| Name | Stops | Web | Native |
+| --- | --- | --- | --- |
+| `sunset` | magenta → orange → yellow, 135° | `bg-sunset`, `var(--gradient-sunset)` | `gradients.sunset.stops` |
+| `vice` | yellow → orange → magenta → ultraviolet → blue, top → bottom | `bg-vice`, `text-vice`, `text-stripes` | `gradients.vice.stops` |
+
+<div className="not-prose my-4 grid grid-cols-2 gap-3">
+  <div className="h-16 rounded-md bg-sunset" />
+  <div className="h-16 rounded-md bg-vice" />
+</div>
+
+## Glow
+
+`glow` (box) and `glow-text` add a neon bloom in `currentColor`. Set the radius with `[--glow:20px]`.
+
+## Effect colours
+
+These stay the same in both themes:
+
+| Token | Use |
+| --- | --- |
+| `glitch-r`, `glitch-g`, `glitch-b` | Chromatic-aberration channels used by RGB split |
+| `burn` | Film-burn light leak |
+| `scanline` | Scanline overlay (25% black) |
+
+The SMPTE colour bars are exported as `smpte` from `@vinyl-ui/tokens` for test patterns.
+
+## Shape and depth
+
+- `--radius: 0.25rem`. Corners stay tight and geometric. The `sm` / `md` / `lg` / `xl` radii derive from it.
+- `shadow-retro` is a hard 4px offset in the foreground colour, and `shadow-neon` is a primary-coloured glow (web).
+  Native components fake the hard shadow with thicker bottom and right borders.
+
+## Customising
+
+**One project:** after `shadcn add @vinyl/theme`, edit the CSS variables in your global stylesheet
+like any shadcn theme. On native, override variables in your own `@layer theme` block **after** the
+`native.css` import.
+
+**At runtime (JS):**
+
+```ts
+import { effects, ramps, smpte, themes } from '@vinyl-ui/tokens';
+
+themes.dark.primary; // '#FF2E97'
+ramps.cyan[300];
+```
+
+**Forking the system:** change `packages/tokens/src/tokens.ts` and run `pnpm build`. The contrast
+test (`pnpm --filter @vinyl-ui/tokens test`) fails if any surface/foreground pair drops below WCAG AA.

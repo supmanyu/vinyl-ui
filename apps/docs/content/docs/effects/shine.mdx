@@ -1,0 +1,46 @@
+---
+title: Shine
+description: A diagonal light sweep across chrome, tiles and buttons.
+---
+
+<Preview name="shine" />
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Shine } from '@vinyl-ui/effects';
+
+<Shine className="rounded-lg bg-sunset p-8">Chrome finish</Shine>
+```
+
+Or put `animate-shine` on an absolutely positioned overlay inside any `relative overflow-hidden` box.
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Shine } from '@vinyl-ui/effects';
+
+<Shine className="rounded-lg bg-ultraviolet p-8">
+  <Text>Chrome finish</Text>
+</Shine>
+```
+
+</Tab>
+</Tabs>
+
+## Props
+
+<TypeTable
+  type={{
+    duration: { type: 'number', default: '3000', description: 'One cycle: the sweep takes 60%, then it rests.' },
+    className: { type: 'string' },
+    style: { type: 'StyleProp<ViewStyle>', description: 'Native only.' },
+  }}
+/>
+
+The sheen is a 105° white band at 50% opacity. It's hidden from assistive tech, ignores pointer
+events, and disappears under reduced motion. `NeonTile` uses it by default.

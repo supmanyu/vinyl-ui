@@ -1,0 +1,54 @@
+---
+title: Input
+description: Text field with a monospaced entry and a cyan focus glow.
+---
+
+<Preview name="input" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/input
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/input
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Input } from '@/components/ui/input';
+
+<Input placeholder="Track name" aria-label="Track name" />
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Input } from '@/components/ui/input';
+
+<Input placeholder="Track name" accessibilityLabel="Track name" />
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Accepts every native `<input>` / `TextInput` prop. Set `aria-invalid` (web) to show the destructive state. Always give it a label.

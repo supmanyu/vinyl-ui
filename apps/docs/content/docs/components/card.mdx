@@ -1,0 +1,69 @@
+---
+title: Card
+description: Panel with a thick border and a hard retro shadow.
+---
+
+<Preview name="card" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/card
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/card
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Mixtape</CardTitle>
+    <CardDescription>C90 cassette</CardDescription>
+  </CardHeader>
+  <CardContent>…</CardContent>
+  <CardFooter>…</CardFooter>
+</Card>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Text } from '@/components/ui/text';
+
+<Card>
+  <CardHeader>
+    <CardTitle>Mixtape</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <Text>…</Text>
+  </CardContent>
+</Card>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Parts: `Card`, `CardHeader`, `CardTitle`, `CardDescription`, `CardContent`, `CardFooter`. On native, the shadow is a thicker bottom/right border.

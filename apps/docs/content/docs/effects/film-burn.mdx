@@ -1,0 +1,52 @@
+---
+title: Film Burn
+description: A warm light leak drifting across a surface, like over-exposed 35mm.
+---
+
+<Preview name="film-burn" />
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { FilmBurn } from '@vinyl-ui/effects';
+
+<FilmBurn className="rounded-md bg-ultraviolet p-6">Summer '86</FilmBurn>
+```
+
+Or the utility: `<div class="film-burn">…</div>`. It uses `::after`, so it combines with `scanlines` (`::before`).
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { FilmBurn } from '@vinyl-ui/effects';
+
+<FilmBurn className="rounded-md bg-ultraviolet p-6">
+  <Text>Summer '86</Text>
+</FilmBurn>
+```
+
+</Tab>
+</Tabs>
+
+## Props
+
+<TypeTable
+  type={{
+    active: { type: 'boolean', default: 'true', description: 'Show the overlay.' },
+    className: { type: 'string', description: 'Classes for the container.' },
+    style: { type: 'StyleProp<ViewStyle>', description: 'Native only.' },
+  }}
+/>
+
+## How it works
+
+- **Web:** two radial gradients in `--color-burn` on a `::after` layer with `mix-blend-mode: screen`,
+  drifting over `--film-burn-duration` (6s). The container gets `overflow: hidden` and `isolation: isolate`.
+- **Native:** an `react-native-svg` radial-gradient overlay with `mixBlendMode: 'screen'`
+  (New Architecture), animated by Reanimated.
+
+Works best on mid-to-dark surfaces. On cream backgrounds the screen blend is barely visible.

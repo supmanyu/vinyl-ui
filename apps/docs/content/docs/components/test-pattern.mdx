@@ -1,0 +1,54 @@
+---
+title: Test Pattern
+description: SMPTE colour bars for empty, offline and loading states.
+---
+
+<Preview name="test-pattern" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/test-pattern
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/test-pattern
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { TestPattern } from '@/components/ui/test-pattern';
+
+<TestPattern>No signal</TestPattern>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { TestPattern } from '@/components/ui/test-pattern';
+
+<TestPattern>No signal</TestPattern>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Renders SMPTE ECR 1-1978 bars at 16:9 with `role="img"`. The overlay text (`children`) is also used as the accessible label. Otherwise `label` is used (default "Test pattern"). Pair it with `SmpteWipe` for a channel-change reveal.

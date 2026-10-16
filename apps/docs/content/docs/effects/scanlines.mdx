@@ -1,0 +1,36 @@
+---
+title: Scanlines
+description: CRT scanline overlay.
+---
+
+<Preview name="scanlines" />
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Scanlines } from '@vinyl-ui/effects';
+
+<Scanlines className="bg-cyan p-6">CH 03</Scanlines>
+// or: <div class="scanlines">…</div>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Scanlines } from '@vinyl-ui/effects';
+
+<Scanlines className="bg-cyan p-6">
+  <Text>CH 03</Text>
+</Scanlines>
+```
+
+</Tab>
+</Tabs>
+
+A 1px `--color-scanline` line every 3px, drawn above the content with pointer events disabled. Web
+uses a repeating linear gradient on `::before`. Native uses an SVG pattern. The Dialog overlay uses it
+on the web.

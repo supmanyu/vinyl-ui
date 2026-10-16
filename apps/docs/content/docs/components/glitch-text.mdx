@@ -1,0 +1,61 @@
+---
+title: Glitch Text
+description: Display heading with animated chromatic aberration.
+---
+
+<Preview name="glitch-text" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/glitch-text
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/glitch-text
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { GlitchText } from '@/components/ui/glitch-text';
+
+<GlitchText level={1}>Night Drive</GlitchText>
+<GlitchText level={3} animated={false} intensity={1}>Side B</GlitchText>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { GlitchText } from '@/components/ui/glitch-text';
+
+<GlitchText level={1}>Night Drive</GlitchText>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+| Prop | Values | Default |
+| --- | --- | --- |
+| `level` | `1` `2` `3` `4`: heading level and size | `1` |
+| `animated` | Glitch bursts | `true` |
+| `intensity` | Channel offset in px | `2` |
+
+On native, `children` must be a string. It's announced as one heading. For short headings only; see [Motion & accessibility](/docs/motion-accessibility).

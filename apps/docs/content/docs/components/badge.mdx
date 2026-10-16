@@ -1,0 +1,61 @@
+---
+title: Badge
+description: Monospaced, uppercase status label.
+---
+
+<Preview name="badge" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/badge
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/badge
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Badge } from '@/components/ui/badge';
+
+<Badge>Side A</Badge>
+<Badge variant="outline">Mono</Badge>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Badge } from '@/components/ui/badge';
+import { Text } from '@/components/ui/text';
+
+<Badge variant="secondary">
+  <Text>33⅓</Text>
+</Badge>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+| Prop | Values | Default |
+| --- | --- | --- |
+| `variant` | `default` `secondary` `accent` `destructive` `outline` | `default` |
+| `asChild` | Render as the child element | `false` |

@@ -1,0 +1,43 @@
+---
+title: Aspect Ratio
+description: Keeps content at a fixed ratio.
+---
+
+<Preview name="aspect-ratio" />
+
+**Vinyl styling:** Unstyled; pair it with Test Pattern for 4:3 CRT frames.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/aspect-ratio
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<AspectRatio ratio={4 / 3}>
+  <TestPattern className="size-full" />
+</AspectRatio>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<AspectRatio ratio={4 / 3}>
+  <TestPattern />
+</AspectRatio>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Aspect Ratio](https://ui.shadcn.com/docs/components/aspect-ratio) on the web, and React Native Reusables' [Aspect Ratio](https://reactnativereusables.com/docs/components/aspect-ratio) on native. Vinyl only changes styling and motion.

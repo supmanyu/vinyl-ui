@@ -1,0 +1,45 @@
+---
+title: Toggle Group
+description: A set of toggles, single or multiple.
+---
+
+<Preview name="toggle-group" />
+
+**Vinyl styling:** Shares Toggle styling.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/toggle-group
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<ToggleGroup type="single" defaultValue="b" variant="outline">
+  <ToggleGroupItem value="a">A</ToggleGroupItem>
+  <ToggleGroupItem value="b">B</ToggleGroupItem>
+</ToggleGroup>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<ToggleGroup type="single" value={side} onValueChange={setSide} variant="outline">
+  <ToggleGroupItem value="a"><Text>A</Text></ToggleGroupItem>
+  <ToggleGroupItem value="b"><Text>B</Text></ToggleGroupItem>
+</ToggleGroup>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Toggle Group](https://ui.shadcn.com/docs/components/toggle-group) on the web, and React Native Reusables' [Toggle Group](https://reactnativereusables.com/docs/components/toggle-group) on native. Vinyl only changes styling and motion.

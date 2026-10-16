@@ -1,0 +1,56 @@
+packages:
+  - packages/*
+  - apps/*
+allowBuilds:
+  esbuild: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@vitest/mocker@5.0.5'
+  - '@vitest/spy@5.0.5'
+  - vitest@5.0.5
+  - '@react-native/asset-utils@0.88.0'
+  - '@react-native/codegen@0.88.0'
+  - '@react-native/community-cli-plugin@0.88.0'
+  - '@react-native/debugger-frontend@0.88.0'
+  - '@react-native/debugger-shell@0.88.0'
+  - '@react-native/dev-middleware@0.88.0'
+  - '@react-native/gradle-plugin@0.88.0'
+  - '@react-native/normalize-colors@0.88.0'
+  - '@react-native/virtualized-lists@0.88.0'
+  - react-native-svg@15.16.0
+  - react-native@0.88.0
+  - lucide-react-native@1.58.0
+  - lucide-react@1.58.0
+  - '@expo/cli@58.1.10'
+  - '@expo/metro-config@58.0.14'
+  - '@expo/package-manager@1.14.2'
+  - '@expo/prebuild-config@58.0.14'
+  - '@expo/router-server@58.0.14'
+  - '@react-native/babel-plugin-codegen@0.88.0'
+  - '@react-native/js-polyfills@0.88.0'
+  - babel-preset-expo@58.0.16
+  - expo-asset@58.0.16
+  - expo-modules-core@58.0.20
+  - expo-modules-jsi@58.0.14
+  - expo@58.0.12
+  - '@fumadocs/tailwind@0.1.4'
+  - '@next/env@16.4.2'
+  - '@next/swc-darwin-arm64@16.4.2'
+  - '@next/swc-darwin-x64@16.4.2'
+  - '@next/swc-linux-arm64-gnu@16.4.2'
+  - '@next/swc-linux-arm64-musl@16.4.2'
+  - '@next/swc-linux-x64-gnu@16.4.2'
+  - '@next/swc-linux-x64-musl@16.4.2'
+  - '@next/swc-win32-arm64-msvc@16.4.2'
+  - '@next/swc-win32-x64-msvc@16.4.2'
+  - fumadocs-core@16.17.5
+  - fumadocs-ui@16.17.5
+  - next@16.4.2
+
+# One React / React Native across the workspace (Expo SDK 58 pins these).
+overrides:
+  react: 19.3.0
+  react-dom: 19.3.0
+  react-native: 0.88.0
+  react-native-reanimated: 4.7.1
+  react-native-svg: 15.16.0

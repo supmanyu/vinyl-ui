@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "uniwind";
+@import "@vinyl-ui/tokens/native.css";
+
+/* Registry sources live outside this app. */
+@source "../../packages/registry/registry/native";

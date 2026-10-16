@@ -1,0 +1,41 @@
+---
+title: Checkbox
+description: Binary choice control.
+---
+
+<Preview name="checkbox" />
+
+**Vinyl styling:** 2px foreground border with tight corners.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/checkbox
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Checkbox id="loop" defaultChecked />
+<Label htmlFor="loop">Auto-reverse</Label>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Checkbox checked={loop} onCheckedChange={setLoop} aria-labelledby="loop" />
+<Label nativeID="loop" onPress={() => setLoop(!loop)}>Auto-reverse</Label>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Checkbox](https://ui.shadcn.com/docs/components/checkbox) on the web, and React Native Reusables' [Checkbox](https://reactnativereusables.com/docs/components/checkbox) on native. Vinyl only changes styling and motion.

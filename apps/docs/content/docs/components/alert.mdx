@@ -1,0 +1,47 @@
+---
+title: Alert
+description: Inline status message with an icon.
+---
+
+<Preview name="alert" />
+
+**Vinyl styling:** Thick left accent bar.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/alert
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Alert>
+  <DiscIcon />
+  <AlertTitle>Now playing</AlertTitle>
+  <AlertDescription>Side A, track 3.</AlertDescription>
+</Alert>
+<Alert variant="destructive">…</Alert>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Alert icon={DiscIcon}>
+  <AlertTitle>Now playing</AlertTitle>
+  <AlertDescription>Side A, track 3.</AlertDescription>
+</Alert>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Alert](https://ui.shadcn.com/docs/components/alert) on the web, and React Native Reusables' [Alert](https://reactnativereusables.com/docs/components/alert) on native. Vinyl only changes styling and motion.

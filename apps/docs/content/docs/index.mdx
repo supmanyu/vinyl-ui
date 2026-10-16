@@ -1,0 +1,45 @@
+---
+title: Introduction
+description: An 80s, analog-glitch design system for React and React Native.
+---
+
+<Preview name="glitch-text" />
+
+Vinyl UI is an open-source (MIT) design system built on a neon 80s palette and the look of analog
+video: **RGB splits**, **film burns**, **scanlines** and **SMPTE wipes**. It runs on
+**React web** (Tailwind CSS v4 + [shadcn/ui](https://ui.shadcn.com)) and **React Native**
+(Uniwind + [React Native Reusables](https://reactnativereusables.com)) from one set of tokens.
+
+## How it ships
+
+Vinyl UI is distributed the shadcn way, so you own your component code.
+
+| Piece | How you get it | What it is |
+| --- | --- | --- |
+| `@vinyl-ui/tokens` | npm | The palette, both themes and SMPTE colours, as Tailwind v4 CSS (web), Uniwind CSS (native) and JS. |
+| `@vinyl-ui/effects` | npm | `RGBSplit`, `FilmBurn`, `Scanlines`, `SmpteWipe`, `NeonDraw`, `Shine` and `StripeText` for both platforms, plus Tailwind utilities for the web. |
+| Components | shadcn registry (`@vinyl/*`) | 30 shadcn/ui components restyled for Vinyl (Accordion through Tooltip), plus Vinyl originals: Glitch Text, Neon Tile, Test Pattern and Wordmark. They're copied into your project. |
+
+The npm packages give you fixes without re-copying code. The components are yours to edit.
+
+## Design principles
+
+- **Glitch is seasoning, not the meal.** Effects go on headings, transitions and decorative
+  surfaces. Body copy, form labels and anything someone has to read carefully stay clean.
+- **Geometric over soft.** Tight corners (`--radius: 0.25rem`), thick borders and hard offset
+  shadows instead of blurs.
+- **Accessible by default.** Both themes pass WCAG AA contrast for every surface/foreground
+  pair (checked in CI). Every animation respects reduced motion, and glitch bursts stay under
+  three changes per second.
+- **Same API on both platforms.** Variants and props match across web and native wherever the
+  platform allows. Where they differ, the docs say so.
+
+## Next steps
+
+<Cards>
+  <Card title="Install on the web" href="/docs/installation/web" />
+  <Card title="Install on React Native" href="/docs/installation/native" />
+  <Card title="Theming" href="/docs/theming" />
+  <Card title="Effects" href="/docs/effects/rgb-split" />
+  <Card title="Title sequence recipe" href="/docs/recipes/title-sequence" />
+</Cards>

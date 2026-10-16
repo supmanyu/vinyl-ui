@@ -1,0 +1,413 @@
+/*
+ * @vinyl-ui/effects — Tailwind v4 utilities for analog, glitch and geometric effects.
+ * Import after tailwindcss and @vinyl-ui/tokens:
+ *   @import "tailwindcss";
+ *   @import "@vinyl-ui/tokens/web.css";
+ *   @import "@vinyl-ui/effects/effects.css";
+ * Every animation is disabled (or collapsed to 1ms) under prefers-reduced-motion.
+ */
+
+/* Let Tailwind see the class names used by the prebuilt components next to this file. */
+@source "./";
+
+/* ── RGB split (chromatic aberration) ─────────────────────────────── */
+
+@utility rgb-split {
+  text-shadow:
+    calc(var(--rgb-split, 2px) * -1) 0 var(--color-glitch-r),
+    var(--rgb-split, 2px) 0 var(--color-glitch-b);
+}
+
+@utility rgb-split-* {
+  --rgb-split: --value([length]);
+  --rgb-split: calc(--value(integer) * 1px);
+}
+
+@keyframes vinyl-glitch {
+  0%,
+  88%,
+  100% {
+    transform: none;
+    clip-path: none;
+  }
+  89% {
+    transform: translateX(-3px) skewX(-10deg);
+    clip-path: inset(12% 0 52% 0);
+    text-shadow:
+      calc(var(--rgb-split, 2px) * -3) 0 var(--color-glitch-r),
+      calc(var(--rgb-split, 2px) * 2) 0 var(--color-glitch-b);
+  }
+  92% {
+    transform: translateX(3px);
+    clip-path: inset(58% 0 6% 0);
+    text-shadow:
+      calc(var(--rgb-split, 2px) * 2) 0 var(--color-glitch-r),
+      calc(var(--rgb-split, 2px) * -3) 0 var(--color-glitch-g);
+  }
+  95% {
+    transform: translateX(-1px);
+    clip-path: inset(30% 0 30% 0);
+  }
+}
+
+/* A ~0.3s burst every 4s — well under the WCAG 2.3.1 three-flashes-per-second limit. */
+@utility animate-glitch {
+  animation: vinyl-glitch var(--glitch-duration, 4s) steps(1, end) infinite;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+/* ── Film burn ────────────────────────────────────────────────────── */
+
+@keyframes vinyl-film-burn {
+  from {
+    transform: translate(-6%, 4%) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  to {
+    transform: translate(6%, -4%) scale(1.15);
+    opacity: 0.7;
+  }
+}
+
+@utility film-burn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        40% 50% at 15% 85%,
+        color-mix(in oklab, var(--color-burn) 60%, white) 0%,
+        var(--color-burn) 25%,
+        transparent 70%
+      ),
+      radial-gradient(
+        30% 40% at 90% 10%,
+        color-mix(in oklab, var(--color-burn) 60%, var(--color-magenta)) 0%,
+        transparent 70%
+      );
+    mix-blend-mode: screen;
+    opacity: 0.7;
+    animation: vinyl-film-burn var(--film-burn-duration, 6s) ease-in-out infinite alternate;
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
+}
+
+/* ── Scanlines ────────────────────────────────────────────────────── */
+
+@utility scanlines {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0 2px,
+      var(--color-scanline) 2px 3px
+    );
+  }
+}
+
+/* ── SMPTE wipes (clip-path reveals; add `wipe-out` to conceal) ──── */
+
+@keyframes vinyl-wipe-bar-left {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-bar-right {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-bar-top {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-bar-bottom {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-barn-door-v {
+  from {
+    clip-path: inset(0 50%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-barn-door-h {
+  from {
+    clip-path: inset(50% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-box {
+  from {
+    clip-path: inset(50%);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+@keyframes vinyl-wipe-iris {
+  from {
+    clip-path: circle(0% at 50% 50%);
+  }
+  to {
+    clip-path: circle(71% at 50% 50%);
+  }
+}
+@keyframes vinyl-wipe-diagonal {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 0);
+  }
+  to {
+    clip-path: polygon(0 0, 200% 0, 0 200%);
+  }
+}
+
+@utility wipe-out {
+  --wipe-direction: reverse;
+}
+
+@utility animate-wipe-bar-left {
+  animation: vinyl-wipe-bar-left var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-bar-right {
+  animation: vinyl-wipe-bar-right var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-bar-top {
+  animation: vinyl-wipe-bar-top var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-bar-bottom {
+  animation: vinyl-wipe-bar-bottom var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-barn-door-v {
+  animation: vinyl-wipe-barn-door-v var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-barn-door-h {
+  animation: vinyl-wipe-barn-door-h var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-box {
+  animation: vinyl-wipe-box var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-iris {
+  animation: vinyl-wipe-iris var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-wipe-diagonal {
+  animation: vinyl-wipe-diagonal var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+
+/* Venetian blinds: --blinds slats (default 8) open top-to-bottom together. */
+@property --vinyl-wipe-p {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@keyframes vinyl-wipe-blinds {
+  from {
+    --vinyl-wipe-p: 0%;
+  }
+  to {
+    --vinyl-wipe-p: 100%;
+  }
+}
+@utility animate-wipe-blinds {
+  mask-image: linear-gradient(to bottom, #000 var(--vinyl-wipe-p), transparent var(--vinyl-wipe-p));
+  mask-size: 100% calc(100% / var(--blinds, 8));
+  mask-repeat: repeat-y;
+  animation: vinyl-wipe-blinds var(--wipe-duration, 600ms)
+    var(--wipe-easing, cubic-bezier(0.65, 0, 0.35, 1)) both var(--wipe-direction, normal);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+
+/* ── Gradients ────────────────────────────────────────────────────── */
+
+@utility bg-sunset {
+  background-image: var(--gradient-sunset);
+}
+@utility bg-vice {
+  background-image: var(--gradient-vice);
+}
+
+/* Gradient-filled text (stays real, selectable text). */
+@utility text-vice {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-vice);
+  background-clip: text;
+  -webkit-background-clip: text;
+  box-decoration-break: clone;
+}
+
+/* Outrun slit type: vice gradient cut into horizontal stripes. Display sizes only. */
+@utility text-stripes {
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-image: var(--gradient-vice);
+  background-clip: text;
+  -webkit-background-clip: text;
+  box-decoration-break: clone;
+  mask-image: repeating-linear-gradient(
+    to bottom,
+    #000 0 var(--stripe-fill, 0.11em),
+    transparent var(--stripe-fill, 0.11em) var(--stripe-pitch, 0.16em)
+  );
+}
+
+/* ── Neon glow (uses currentColor) ────────────────────────────────── */
+
+@utility glow-text {
+  text-shadow:
+    0 0 calc(var(--glow, 10px) / 3) currentColor,
+    0 0 var(--glow, 10px) currentColor;
+}
+@utility glow {
+  box-shadow:
+    0 0 0 1px currentColor,
+    0 0 var(--glow, 14px) currentColor,
+    inset 0 0 calc(var(--glow, 14px) / 2) currentColor;
+}
+
+/* ── Draw-on stroke (SVG shapes) ──────────────────────────────────── */
+
+@keyframes vinyl-draw {
+  from {
+    stroke-dashoffset: var(--draw-length, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@utility animate-draw {
+  stroke-dasharray: var(--draw-length, 1000);
+  animation: vinyl-draw var(--draw-duration, 1.5s) cubic-bezier(0.65, 0, 0.35, 1) both;
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+
+/* ── Shine (diagonal light sweep; put on an overlay element) ─────── */
+
+@keyframes vinyl-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+@utility animate-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgb(255 255 255 / 0.5) 50%, transparent 65%);
+  animation: vinyl-shine var(--shine-duration, 3s) ease-in-out infinite;
+  @media (prefers-reduced-motion: reduce) {
+    visibility: hidden;
+    animation: none;
+  }
+}
+
+/* ── Collapse (Radix Accordion / Collapsible height) ──────────────── */
+
+@keyframes vinyl-collapse-open {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height, var(--radix-collapsible-content-height));
+  }
+}
+@keyframes vinyl-collapse-close {
+  from {
+    height: var(--radix-accordion-content-height, var(--radix-collapsible-content-height));
+  }
+  to {
+    height: 0;
+  }
+}
+@utility animate-collapse-open {
+  animation: vinyl-collapse-open 200ms cubic-bezier(0.65, 0, 0.35, 1);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}
+@utility animate-collapse-close {
+  animation: vinyl-collapse-close 200ms cubic-bezier(0.65, 0, 0.35, 1);
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1ms;
+  }
+}

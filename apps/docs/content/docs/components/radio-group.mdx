@@ -1,0 +1,45 @@
+---
+title: Radio Group
+description: Choose one option from a set.
+---
+
+<Preview name="radio-group" />
+
+**Vinyl styling:** 2px foreground rings.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/radio-group
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<RadioGroup defaultValue="chrome">
+  <RadioGroupItem value="chrome" id="chrome" />
+  <Label htmlFor="chrome">Chrome</Label>
+</RadioGroup>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<RadioGroup value={tape} onValueChange={setTape}>
+  <RadioGroupItem value="chrome" aria-labelledby="chrome" />
+  <Label nativeID="chrome" onPress={() => setTape('chrome')}>Chrome</Label>
+</RadioGroup>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Radio Group](https://ui.shadcn.com/docs/components/radio-group) on the web, and React Native Reusables' [Radio Group](https://reactnativereusables.com/docs/components/radio-group) on native. Vinyl only changes styling and motion.

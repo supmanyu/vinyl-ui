@@ -1,0 +1,46 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "@vinyl-ui/tokens/web.css";
+@import "@vinyl-ui/effects/effects.css";
+
+/* Live previews render the web registry components straight from source. */
+@source "../../../packages/registry/registry/web";
+
+/* Dress Fumadocs in the Vinyl palette. */
+:root,
+.dark {
+  --color-fd-background: var(--background);
+  --color-fd-foreground: var(--foreground);
+  --color-fd-card: var(--card);
+  --color-fd-card-foreground: var(--card-foreground);
+  --color-fd-popover: var(--popover);
+  --color-fd-popover-foreground: var(--popover-foreground);
+  --color-fd-primary: var(--primary);
+  --color-fd-primary-foreground: var(--primary-foreground);
+  --color-fd-secondary: var(--muted);
+  --color-fd-secondary-foreground: var(--foreground);
+  --color-fd-muted: var(--muted);
+  --color-fd-muted-foreground: var(--muted-foreground);
+  --color-fd-accent: var(--muted);
+  --color-fd-accent-foreground: var(--foreground);
+  --color-fd-border: var(--border);
+  --color-fd-ring: var(--ring);
+}
+
+/* VT323 is a display face; keep code samples in a readable monospace. */
+:where(pre, code, kbd) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+/* From the Fumadocs template: undo Radix scroll-lock padding. */
+/* biome-ignore-start lint/complexity/noImportantStyles: must beat inline styles */
+html > body[data-scroll-locked] {
+  margin-right: 0px !important;
+  --removed-body-scroll-bar-size: 0px !important;
+}
+/* biome-ignore-end lint/complexity/noImportantStyles: must beat inline styles */

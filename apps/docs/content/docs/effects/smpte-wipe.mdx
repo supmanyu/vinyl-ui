@@ -1,0 +1,74 @@
+---
+title: SMPTE Wipe
+description: Geometric broadcast transitions — bars, barn doors, box, iris, diagonal and blinds.
+---
+
+<Preview name="smpte-wipe" />
+
+Named after the SMPTE 259M wipe codes used by vision mixers. Wrap anything to reveal it (`mode="in"`)
+or hide it (`mode="out"`). To replay, change the component's `key`.
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { SmpteWipe } from '@vinyl-ui/effects';
+
+<SmpteWipe key={slide} pattern="iris" duration={600} onEnd={() => setReady(true)}>
+  <Slide />
+</SmpteWipe>
+```
+
+Or the utilities: `animate-wipe-box`, plus `wipe-out` to reverse, and `[--wipe-duration:400ms]`.
+They combine with state variants, for example `data-[state=open]:animate-wipe-box`.
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { SmpteWipe } from '@vinyl-ui/effects';
+import { themes } from '@vinyl-ui/tokens';
+
+<SmpteWipe key={slide} pattern="iris" color={themes.dark.background}>
+  <Slide />
+</SmpteWipe>
+```
+
+Native can't clip arbitrary views, so it animates a **cover** with a growing hole (an SVG path with
+`fillRule="evenodd"`). Set `color` to whatever sits behind the component.
+
+</Tab>
+</Tabs>
+
+## Patterns
+
+| `pattern` | SMPTE | Reveal |
+| --- | --- | --- |
+| `bar-left` | 1 | Vertical edge sweeping left → right |
+| `bar-right` | – | Right → left |
+| `bar-top` | 2 | Horizontal edge sweeping top → bottom |
+| `bar-bottom` | – | Bottom → top |
+| `barn-door-v` | 21 | Opens from the vertical centre line |
+| `barn-door-h` | 22 | Opens from the horizontal centre line |
+| `box` | – | Rectangle growing from the centre |
+| `iris` | – | Circle growing from the centre |
+| `diagonal` | – | Triangle growing from the top-left corner |
+| `blinds` | – | Venetian blinds: 8 slats open together (`[--blinds:12]` to change the count on web) |
+
+## Props
+
+<TypeTable
+  type={{
+    pattern: { type: 'WipePattern', default: "'bar-left'" },
+    mode: { type: "'in' | 'out'", default: "'in'", description: 'Reveal or conceal.' },
+    duration: { type: 'number', default: '600', description: 'Milliseconds. ~0 under reduced motion.' },
+    onEnd: { type: '() => void', description: 'Fires when the wipe finishes, including under reduced motion.' },
+    color: { type: 'string', default: 'themes.dark.background', description: 'Native only. Colour of the cover.' },
+    className: { type: 'string' },
+  }}
+/>
+
+`WIPE_PATTERNS` lists every pattern. `wipePath(pattern, progress, width, height)` (native entry) returns the
+SVG path if you want to drive a wipe yourself.

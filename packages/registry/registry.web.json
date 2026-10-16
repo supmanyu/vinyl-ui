@@ -1,0 +1,463 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vinyl-ui-web",
+  "homepage": "https://github.com/supmanyu/vinyl-ui",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Vinyl theme",
+      "description": "Night Drive (dark) and Sun-Faded (light) themes, the 80s palette and effect utilities.",
+      "dependencies": ["@vinyl-ui/tokens", "@vinyl-ui/effects"],
+      "css": {
+        "@import \"@vinyl-ui/tokens/palette.css\"": {},
+        "@import \"@vinyl-ui/effects/effects.css\"": {}
+      },
+      "cssVars": "__TOKENS__"
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Raised retro button with a hard shadow and optional RGB-split hover.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Mono, uppercase status label.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Panel with a thick border and retro shadow.",
+      "files": [
+        {
+          "path": "registry/web/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text field with a cyan focus glow.",
+      "files": [
+        {
+          "path": "registry/web/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Square hardware-style toggle.",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs whose panels bar-wipe in.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal that opens with a box wipe and closes like a CRT switching off.",
+      "dependencies": ["radix-ui", "lucide-react"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glitch-text",
+      "type": "registry:ui",
+      "title": "Glitch Text",
+      "description": "Display heading with animated chromatic aberration.",
+      "dependencies": ["@vinyl-ui/effects"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/glitch-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "test-pattern",
+      "type": "registry:ui",
+      "title": "Test Pattern",
+      "description": "SMPTE colour bars for empty, offline and loading states.",
+      "dependencies": ["@vinyl-ui/tokens"],
+      "files": [
+        {
+          "path": "registry/web/ui/test-pattern.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "neon-tile",
+      "type": "registry:ui",
+      "title": "Neon Tile",
+      "description": "Sunset-gradient app-icon tile with a glowing gold rim and a shine sweep.",
+      "dependencies": ["@vinyl-ui/effects", "class-variance-authority"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/neon-tile.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wordmark",
+      "type": "registry:ui",
+      "title": "Wordmark",
+      "description": "Stacked, slanted multi-colour title lockup.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/wordmark.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "",
+      "dependencies": ["class-variance-authority"],
+      "files": [
+        {
+          "path": "registry/web/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@vinyl/button", "@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@vinyl/theme"]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "",
+      "dependencies": ["lucide-react", "radix-ui"],
+      "registryDependencies": ["@vinyl/theme"],
+      "files": [
+        {
+          "path": "registry/web/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "",
+      "files": [
+        {
+          "path": "registry/web/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@vinyl/theme"]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "",
+      "files": [
+        {
+          "path": "registry/web/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@vinyl/toggle"],
+      "files": [
+        {
+          "path": "registry/web/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "",
+      "dependencies": ["radix-ui"],
+      "files": [
+        {
+          "path": "registry/web/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "registryDependencies": ["@vinyl/theme"]
+    }
+  ]
+}

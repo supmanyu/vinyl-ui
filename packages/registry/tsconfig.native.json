@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@/registry/*": ["./registry/*"]
+    },
+    "types": ["uniwind/types"],
+    "customConditions": ["react-native"]
+  },
+  "include": ["registry/native"]
+}

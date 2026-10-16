@@ -1,0 +1,53 @@
+---
+title: Menubar
+description: Desktop-style persistent menu bar.
+---
+
+<Preview name="menubar" />
+
+**Vinyl styling:** Thick border; menus open with a barn-door wipe.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/menubar
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Menubar>
+  <MenubarMenu>
+    <MenubarTrigger>Deck</MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem>Play <MenubarShortcut>⌘P</MenubarShortcut></MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Menubar value={menu} onValueChange={setMenu}>
+  <MenubarMenu value="deck">
+    <MenubarTrigger><Text>Deck</Text></MenubarTrigger>
+    <MenubarContent>
+      <MenubarItem><Text>Play</Text></MenubarItem>
+    </MenubarContent>
+  </MenubarMenu>
+</Menubar>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Menubar](https://ui.shadcn.com/docs/components/menubar) on the web, and React Native Reusables' [Menubar](https://reactnativereusables.com/docs/components/menubar) on native. Vinyl only changes styling and motion.

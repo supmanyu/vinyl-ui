@@ -1,0 +1,66 @@
+---
+title: Contributing
+description: Work on Vinyl UI locally.
+---
+
+Vinyl UI is MIT-licensed and contributions are welcome.
+
+## Repository layout
+
+```
+packages/
+  tokens/      @vinyl-ui/tokens   — src/tokens.ts → web.css, native.css, palette.css, shadcn.json, JS
+  effects/     @vinyl-ui/effects  — effects.css + X.tsx (web) / X.native.tsx (native), built with tsdown
+  registry/    shadcn registry sources: registry/web/ui, registry/native/ui, registry.{web,native}.json
+apps/
+  docs/                 this site (Fumadocs + Next.js static export on Cloudflare Pages); serves /r/{web,native}
+  playground-native/    Expo app that renders every native component and effect
+```
+
+## Getting started
+
+```bash
+pnpm install
+pnpm build        # tokens → effects → registry → docs
+pnpm test         # token contrast + effects tests
+pnpm typecheck
+pnpm lint
+```
+
+- Docs: `pnpm --filter docs dev` → http://localhost:3000
+- Native playground: `pnpm --filter playground-native start`, then press `i` / `a`, or open it in Expo Go.
+
+## Adding a component
+
+1. Write `packages/registry/registry/web/ui/<name>.tsx` and `registry/native/ui/<name>.tsx`. Keep
+   the same variant names and props where the platform allows.
+2. Import utilities as `@/registry/<platform>/lib/utils` and siblings as
+   `@/registry/<platform>/ui/<x>`. The shadcn CLI rewrites these to the user's aliases.
+3. Add the item to `registry.web.json` and `registry.native.json`, listing npm `dependencies` and
+   `@vinyl/*` `registryDependencies`.
+4. Add a preview in `apps/docs/components/preview.tsx`, a page in `content/docs/components`, and
+   render it in the native playground.
+5. Run `pnpm build && pnpm typecheck`.
+
+## Releasing
+
+Published packages (`@vinyl-ui/tokens`, `@vinyl-ui/effects`) are versioned with
+[Changesets](https://github.com/changesets/changesets):
+
+```bash
+pnpm changeset   # describe your change
+```
+
+Merging to `main` opens a release PR. Merging that PR publishes to npm with provenance.
+
+## Docs and registry hosting
+
+The docs site is a Next.js static export (`apps/docs/out`) hosted on **Cloudflare Pages** (project
+`vinyl-ui`, see `apps/docs/wrangler.toml`). The shadcn registry is served from the same site at
+`/r/web/*` and `/r/native/*`.
+
+- `.github/workflows/deploy-docs.yml` builds and runs `wrangler pages deploy` on every push to `main`
+  (production) and on pull requests (preview URL). It needs the `CLOUDFLARE_API_TOKEN` and
+  `CLOUDFLARE_ACCOUNT_ID` repository secrets.
+- Manual deploy: `pnpm turbo run build --filter=docs && pnpm --filter docs deploy`.
+- Local preview of the production build on the Pages runtime: `pnpm --filter docs start`.

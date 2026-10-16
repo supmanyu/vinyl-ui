@@ -1,0 +1,18 @@
+{
+  "title": "Vinyl UI",
+  "pages": [
+    "index",
+    "---Getting started---",
+    "...installation",
+    "theming",
+    "motion-accessibility",
+    "---Effects---",
+    "...effects",
+    "---Components---",
+    "...components",
+    "---Recipes---",
+    "...recipes",
+    "---Project---",
+    "contributing"
+  ]
+}

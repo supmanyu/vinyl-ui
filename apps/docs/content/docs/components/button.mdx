@@ -1,0 +1,67 @@
+---
+title: Button
+description: Raised retro button with a hard shadow that collapses on press.
+---
+
+<Preview name="button" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/button
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/button
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Button } from '@/components/ui/button';
+
+<Button>Play</Button>
+<Button variant="outline">Eject</Button>
+<Button glitch>Glitch on hover</Button>
+<Button asChild><a href="/tracks">Tracks</a></Button>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Button } from '@/components/ui/button';
+import { Text } from '@/components/ui/text';
+
+<Button onPress={play}>
+  <Text>Play</Text>
+</Button>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+| Prop | Values | Default |
+| --- | --- | --- |
+| `variant` | `default` `secondary` `destructive` `outline` `ghost` `link` | `default` |
+| `size` | `default` `sm` `lg` `icon` | `default` |
+| `glitch` | `boolean`: RGB split on hover/focus (**web only**) | `false` |
+| `asChild` | Render as the child element (**web only**) | `false` |
+
+The press effect uses `motion-reduce:transform-none` on the web.

@@ -1,0 +1,39 @@
+---
+title: Progress
+description: Completion indicator.
+---
+
+<Preview name="progress" />
+
+**Vinyl styling:** Chunky bordered track with a sunset fill on web.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/progress
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Progress value={62} aria-label="Rewinding" />
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Progress value={62} aria-label="Rewinding" />
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Progress](https://ui.shadcn.com/docs/components/progress) on the web, and React Native Reusables' [Progress](https://reactnativereusables.com/docs/components/progress) on native. Vinyl only changes styling and motion.

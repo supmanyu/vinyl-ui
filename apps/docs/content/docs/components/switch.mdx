@@ -1,0 +1,56 @@
+---
+title: Switch
+description: Square, hardware-style toggle.
+---
+
+<Preview name="switch" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/switch
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/switch
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Switch } from '@/components/ui/switch';
+
+<label className="flex items-center gap-3">
+  <Switch checked={on} onCheckedChange={setOn} /> Dolby NR
+</label>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Switch } from '@/components/ui/switch';
+
+<Switch checked={on} onCheckedChange={setOn} aria-label="Dolby NR" />
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Web: Radix `Switch` props. Native: `@rn-primitives/switch` props (`checked` and `onCheckedChange` are required).

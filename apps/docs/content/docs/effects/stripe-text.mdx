@@ -1,0 +1,53 @@
+---
+title: Stripe Text
+description: Outrun slit type — the vice gradient cut into horizontal stripes.
+---
+
+<Preview name="stripe-text" />
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { StripeText } from '@vinyl-ui/effects';
+
+<StripeText className="font-display text-8xl font-black italic">VICE</StripeText>
+```
+
+Or the utilities: `text-stripes` (striped) and `text-vice` (smooth gradient fill). Tune the cut with
+`[--stripe-pitch:0.2em]` and `[--stripe-fill:0.12em]`.
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { StripeText } from '@vinyl-ui/effects';
+
+<StripeText className="text-7xl font-black italic">VICE</StripeText>
+```
+
+Native draws the stripes with `react-native-svg` inside a
+[`@react-native-masked-view/masked-view`](https://github.com/react-native-masked-view/masked-view)
+mask, so that package must be installed (it ships in Expo Go; `@vinyl/theme` adds it).
+
+</Tab>
+</Tabs>
+
+## Props
+
+<TypeTable
+  type={{
+    className: { type: 'string', description: 'Font size, weight and style. Colour is ignored.' },
+    style: { type: 'StyleProp<TextStyle>', description: 'Native only.' },
+    pitch: { type: 'number', default: 'height / 8', description: 'Native only. Stripe pitch in px.' },
+    stops: { type: 'string[]', default: 'gradients.vice.stops', description: 'Native only. Gradient stops, top to bottom.' },
+  }}
+/>
+
+<Callout type="warn">
+  Slit type has holes by design, so it can't meet text-contrast requirements. Use it for display
+  numerals and short words, and never for anything people must read. On the web the text is still real,
+  selectable text. On native an invisible copy carries the accessible label.
+</Callout>

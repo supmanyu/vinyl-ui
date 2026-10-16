@@ -1,0 +1,125 @@
+---
+title: React Native
+description: Add Vinyl UI to an Expo / React Native app with Uniwind and React Native Reusables.
+---
+
+Native components are built on [React Native Reusables](https://reactnativereusables.com) primitives
+and styled with [Uniwind](https://uniwind.dev) (Tailwind v4 for React Native). Effects use
+`react-native-reanimated` and `react-native-svg`. Everything runs in Expo Go.
+
+<Callout title="Requirements">
+  React Native 0.81+ (New Architecture), Reanimated 4, react-native-svg 15, Uniwind 1.x and Tailwind CSS 4.
+</Callout>
+
+<Steps>
+<Step>
+
+### Set up Uniwind
+
+```bash
+npx expo install uniwind tailwindcss react-native-reanimated react-native-worklets react-native-svg
+```
+
+```js title="metro.config.js"
+const { getDefaultConfig } = require('expo/metro-config');
+const { withUniwindConfig } = require('uniwind/metro');
+
+module.exports = withUniwindConfig(getDefaultConfig(__dirname), {
+  cssEntryFile: './global.css',
+  dtsFile: './uniwind-types.d.ts',
+});
+```
+
+```css title="global.css"
+@import 'tailwindcss';
+@import 'uniwind';
+```
+
+Import `./global.css` from your root component (`App.tsx` or `app/_layout.tsx`), not from `index.ts`.
+
+</Step>
+<Step>
+
+### Configure shadcn for React Native
+
+Create `components.json` with the `@vinyl` namespace pointing at the **native** registry:
+
+```json title="components.json"
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "tsx": true,
+  "tailwind": { "css": "global.css", "baseColor": "neutral", "cssVariables": true },
+  "aliases": { "components": "@/components", "utils": "@/lib/utils", "ui": "@/components/ui", "lib": "@/lib" }
+}
+```
+
+<RegistrySetup platform="native" />
+
+Make sure `@/*` resolves in `tsconfig.json` (`"paths": { "@/*": ["./*"] }`).
+
+</Step>
+<Step>
+
+### Install the theme
+
+```bash
+npx shadcn@latest add @vinyl/theme
+```
+
+This adds `@import '@vinyl-ui/tokens/native.css';` to `global.css`, which defines the Night Drive
+(`dark`) and Sun-Faded (`light`) Uniwind themes.
+
+<Callout type="warn">
+  If `global.css` already has an `@layer theme { :root { @variant … } }` block (for example from a
+  React Native Reusables template), delete it. Otherwise it overrides the Vinyl colours.
+</Callout>
+
+</Step>
+<Step>
+
+### Add components
+
+```bash
+npx shadcn@latest add @vinyl/button @vinyl/card @vinyl/dialog
+```
+
+`text`, `icon`, `utils` and `native-only-animated-view` come along automatically as dependencies.
+
+</Step>
+<Step>
+
+### Mount the portal host
+
+Dialogs render through `@rn-primitives/portal`. Add a host once at the root:
+
+```tsx title="App.tsx"
+import { PortalHost } from '@rn-primitives/portal';
+
+export default function App() {
+  return (
+    <>
+      {/* your app */}
+      <PortalHost />
+    </>
+  );
+}
+```
+
+</Step>
+</Steps>
+
+## Switching themes
+
+Uniwind follows the system appearance by default. To force a theme:
+
+```tsx
+import { Uniwind } from 'uniwind';
+
+Uniwind.setTheme('dark'); // 'light' | 'dark' | 'system'
+```
+
+## Fonts
+
+Native text uses the platform font unless you load your own. To match the web, load Space Grotesk,
+Orbitron and VT323 with `expo-font` and set `font-[Orbitron]` (or a custom `--font-*` theme variable) where you want them.

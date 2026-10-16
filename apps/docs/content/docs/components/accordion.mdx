@@ -1,0 +1,49 @@
+---
+title: Accordion
+description: Stacked sections that expand and collapse.
+---
+
+<Preview name="accordion" />
+
+**Vinyl styling:** Display-caps triggers, 2px rules, Vinyl collapse animation.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/accordion
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="a">
+    <AccordionTrigger>What's on side A?</AccordionTrigger>
+    <AccordionContent>Five synth tracks.</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Accordion type="single" collapsible>
+  <AccordionItem value="a">
+    <AccordionTrigger><Text>What's on side A?</Text></AccordionTrigger>
+    <AccordionContent><Text>Five synth tracks.</Text></AccordionContent>
+  </AccordionItem>
+</Accordion>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Accordion](https://ui.shadcn.com/docs/components/accordion) on the web, and React Native Reusables' [Accordion](https://reactnativereusables.com/docs/components/accordion) on native. Vinyl only changes styling and motion.

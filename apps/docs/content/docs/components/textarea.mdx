@@ -1,0 +1,39 @@
+---
+title: Textarea
+description: Multi-line text input.
+---
+
+<Preview name="textarea" />
+
+**Vinyl styling:** Matches Input: 2px border, cyan focus, monospaced entry on web.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/textarea
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Textarea placeholder="Dedicate a song…" aria-label="Dedication" />
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Textarea placeholder="Dedicate a song…" aria-label="Dedication" />
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Textarea](https://ui.shadcn.com/docs/components/textarea) on the web, and React Native Reusables' [Textarea](https://reactnativereusables.com/docs/components/textarea) on native. Vinyl only changes styling and motion.

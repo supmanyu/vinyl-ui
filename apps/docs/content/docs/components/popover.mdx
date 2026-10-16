@@ -1,0 +1,45 @@
+---
+title: Popover
+description: Floating panel anchored to a trigger.
+---
+
+<Preview name="popover" />
+
+**Vinyl styling:** Retro-shadow panel with a quick barn-door wipe.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/popover
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild><Button variant="outline">Track info</Button></PopoverTrigger>
+  <PopoverContent>4:12 · 118 BPM</PopoverContent>
+</Popover>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Popover>
+  <PopoverTrigger asChild><Button variant="outline"><Text>Track info</Text></Button></PopoverTrigger>
+  <PopoverContent><Text>4:12 · 118 BPM</Text></PopoverContent>
+</Popover>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Popover](https://ui.shadcn.com/docs/components/popover) on the web, and React Native Reusables' [Popover](https://reactnativereusables.com/docs/components/popover) on native. Vinyl only changes styling and motion.

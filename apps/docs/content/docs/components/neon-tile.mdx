@@ -1,0 +1,50 @@
+---
+title: Neon Tile
+description: Sunset-gradient app-icon tile with a glowing gold rim and a shine sweep.
+---
+
+<Preview name="neon-tile" />
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/neon-tile
+```
+
+Works on both platforms; the `@vinyl` registry URL decides which version you get (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { NeonTile } from '@/components/ui/neon-tile';
+
+<NeonTile size="lg">V</NeonTile>
+<NeonTile shine={false}><DiscIcon /></NeonTile>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { NeonTile } from '@/components/ui/neon-tile';
+import { Text } from '@/components/ui/text';
+
+<NeonTile size="lg">
+  <Text>V</Text>
+</NeonTile>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+| Prop | Values | Default |
+| --- | --- | --- |
+| `size` | `sm` (48px) `md` (80px) `lg` (128px) | `md` |
+| `shine` | Periodic [Shine](/docs/effects/shine) sweep | `true` |
+
+Content is centred in heavy italic `night`, so use a letter, icon or your own mark. On native the gradient is drawn with `react-native-svg`, and the rim glow is an iOS shadow.

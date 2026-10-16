@@ -1,0 +1,61 @@
+---
+title: Neon Draw
+description: Trace any SVG shape with a glowing stroke, like a neon sign warming up.
+---
+
+<Preview name="neon-draw" />
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { NeonDraw } from '@vinyl-ui/effects';
+
+<NeonDraw viewBox="0 0 100 100" className="size-32 text-magenta" label="Logo" onEnd={next}>
+  <path d="M20 8 H80 Q92 8 92 20 V80 Q92 92 80 92 H20 Q8 92 8 80 V20 Q8 8 20 8 Z" />
+  <path d="M28 26 L48 70 L68 26" />
+</NeonDraw>
+```
+
+The stroke uses `currentColor`, so colour it with `text-*`. Or put the utility on your own SVG:
+`<g class="animate-draw [--draw-duration:2s]">…</g>`.
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { NeonDraw } from '@vinyl-ui/effects';
+import { Path } from 'react-native-svg';
+
+<NeonDraw viewBox="0 0 100 100" color="#FF2E97" style={{ width: 128, height: 128 }} label="Logo">
+  <Path d="M20 8 H80 Q92 8 92 20 V80 Q92 92 80 92 H20 Q8 92 8 80 V20 Q8 8 20 8 Z" />
+  <Path d="M28 26 L48 70 L68 26" />
+</NeonDraw>
+```
+
+Children are `react-native-svg` shapes. The glow is an iOS layer shadow; Android shows the stroke without bloom.
+
+</Tab>
+</Tabs>
+
+## Props
+
+<TypeTable
+  type={{
+    viewBox: { type: 'string', description: 'viewBox of your shapes, e.g. "0 0 100 100".' },
+    color: { type: 'string', default: 'currentColor (web) / primary (native)' },
+    strokeWidth: { type: 'number', default: '2', description: 'In viewBox units.' },
+    duration: { type: 'number', default: '1500', description: 'Milliseconds; ~0 under reduced motion.' },
+    glow: { type: 'boolean', default: 'true' },
+    label: { type: 'string', description: 'Accessible name. Omit for decorative drawings.' },
+    onEnd: { type: '() => void', description: 'Fires when the trace completes (also under reduced motion).' },
+  }}
+/>
+
+## How it works
+
+A dash pattern of `--draw-length` (default 1000 units) is slid from fully offset to 0 on a group
+wrapping the shapes, and `stroke-dasharray` / `stroke-dashoffset` inherit to every path. Keep each
+path shorter than 1000 viewBox units (any shape in a `0 0 100 100` box is), or raise `--draw-length`.

@@ -1,0 +1,47 @@
+---
+title: Collapsible
+description: Show and hide a single section.
+---
+
+<Preview name="collapsible" />
+
+**Vinyl styling:** Add `animate-collapse-open` / `animate-collapse-close` to the content for Vinyl motion.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/collapsible
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger asChild><Button variant="outline">Liner notes</Button></CollapsibleTrigger>
+  <CollapsibleContent className="overflow-hidden data-[state=open]:animate-collapse-open data-[state=closed]:animate-collapse-close">
+    …
+  </CollapsibleContent>
+</Collapsible>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<Collapsible>
+  <CollapsibleTrigger asChild><Button variant="outline"><Text>Liner notes</Text></Button></CollapsibleTrigger>
+  <CollapsibleContent><Text>…</Text></CollapsibleContent>
+</Collapsible>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Collapsible](https://ui.shadcn.com/docs/components/collapsible) on the web, and React Native Reusables' [Collapsible](https://reactnativereusables.com/docs/components/collapsible) on native. Vinyl only changes styling and motion.

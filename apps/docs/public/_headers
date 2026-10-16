@@ -1,0 +1,4 @@
+# Registry JSON is fetched by the shadcn CLI and browser-based tools.
+/r/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=300

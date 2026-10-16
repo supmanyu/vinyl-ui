@@ -1,0 +1,63 @@
+---
+title: Alert Dialog
+description: Modal confirmation that interrupts the user.
+---
+
+<Preview name="alert-dialog" />
+
+**Vinyl styling:** Same box-wipe / CRT-off motion as Dialog, scanline overlay, neon border.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/alert-dialog
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger asChild><Button variant="destructive">Erase tape</Button></AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Erase side A?</AlertDialogTitle>
+      <AlertDialogDescription>This can't be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel>Keep it</AlertDialogCancel>
+      <AlertDialogAction>Erase</AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<AlertDialog>
+  <AlertDialogTrigger asChild><Button variant="destructive"><Text>Erase tape</Text></Button></AlertDialogTrigger>
+  <AlertDialogContent>
+    <AlertDialogHeader>
+      <AlertDialogTitle>Erase side A?</AlertDialogTitle>
+      <AlertDialogDescription>This can't be undone.</AlertDialogDescription>
+    </AlertDialogHeader>
+    <AlertDialogFooter>
+      <AlertDialogCancel><Text>Keep it</Text></AlertDialogCancel>
+      <AlertDialogAction><Text>Erase</Text></AlertDialogAction>
+    </AlertDialogFooter>
+  </AlertDialogContent>
+</AlertDialog>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Alert Dialog](https://ui.shadcn.com/docs/components/alert-dialog) on the web, and React Native Reusables' [Alert Dialog](https://reactnativereusables.com/docs/components/alert-dialog) on native. Vinyl only changes styling and motion.

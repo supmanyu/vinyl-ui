@@ -1,0 +1,77 @@
+---
+title: Title sequence
+description: Chain effects into an 80s TV-style opening ident.
+---
+
+<Preview name="title-sequence" />
+
+This recipe strings the effects together into a short broadcast-style opening:
+
+1. **Caption** on black.
+2. **Neon Draw** traces the mark. Its `onEnd` starts the next stage.
+3. A **diagonal wipe** reveals a **Neon Tile** with its **Shine** sweep.
+4. A **blinds wipe** slats in a **Stripe Text** numeral.
+5. A **horizontal barn door** opens on the **Wordmark**, which then fades to black.
+
+Every step is driven by `onEnd` callbacks or short timers. Because `onEnd` still fires under
+reduced motion, the sequence jumps through its stages without animating instead of getting stuck.
+
+```tsx
+'use client';
+
+import { NeonDraw, SmpteWipe, StripeText } from '@vinyl-ui/effects';
+import { useEffect, useState } from 'react';
+import { NeonTile } from '@/components/ui/neon-tile';
+import { Wordmark } from '@/components/ui/wordmark';
+
+export function Ident() {
+  const [stage, setStage] = useState(0);
+
+  // Timed holds between stages; the animated ones advance via onEnd.
+  useEffect(() => {
+    const next: Record<number, [number, number]> = { 0: [1, 1200], 2: [3, 1600], 4: [5, 2600] };
+    const step = next[stage];
+    if (!step) return;
+    const t = setTimeout(() => setStage(step[0]), step[1]);
+    return () => clearTimeout(t);
+  }, [stage]);
+
+  return (
+    <div className="dark flex aspect-[3/4] w-72 items-center justify-center bg-black">
+      {stage === 0 && <p className="text-cream text-sm">If Vinyl UI had an opening in 1986</p>}
+      {stage === 1 && (
+        <NeonDraw viewBox="0 0 100 100" className="size-28 text-magenta" onEnd={() => setStage(2)}>
+          <path d="M20 8 H80 Q92 8 92 20 V80 Q92 92 80 92 H20 Q8 92 8 80 V20 Q8 8 20 8 Z" />
+          <path d="M28 26 L48 70 L68 26" />
+        </NeonDraw>
+      )}
+      {stage === 2 && (
+        <SmpteWipe pattern="diagonal" duration={500}>
+          <NeonTile size="lg">V</NeonTile>
+        </SmpteWipe>
+      )}
+      {stage === 3 && (
+        <SmpteWipe pattern="blinds" duration={800} onEnd={() => setTimeout(() => setStage(4), 700)}>
+          <StripeText className="font-display text-8xl font-black italic">86</StripeText>
+        </SmpteWipe>
+      )}
+      {stage >= 4 && (
+        <div className={stage === 5 ? 'opacity-0 transition-opacity duration-1000' : undefined}>
+          <SmpteWipe pattern="barn-door-h" duration={500}>
+            <Wordmark size="sm" lines={['Night', 'Drive', 'Radio']} accent={<StripeText>86</StripeText>} />
+          </SmpteWipe>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+The same structure works on React Native: swap `<path>` for `react-native-svg`'s `<Path>` and pass
+`color` to `SmpteWipe` (black here).
+
+## Tips
+
+- Keep the whole ident under ~8s and give people a way to skip it.
+- Play it once (on first load or as a loading state), not on a loop.
+- Use your own mark. The demo's "V" tile is an original shape; don't recreate other brands' logos.

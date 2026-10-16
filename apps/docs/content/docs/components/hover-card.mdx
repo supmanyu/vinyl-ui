@@ -1,0 +1,45 @@
+---
+title: Hover Card
+description: Preview content on hover (press on native).
+---
+
+<Preview name="hover-card" />
+
+**Vinyl styling:** Retro-shadow panel with a quick barn-door wipe.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/hover-card
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild><Button variant="link">@nightdrive</Button></HoverCardTrigger>
+  <HoverCardContent>Synthwave, all night.</HoverCardContent>
+</HoverCard>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<HoverCard>
+  <HoverCardTrigger asChild><Button variant="link"><Text>@nightdrive</Text></Button></HoverCardTrigger>
+  <HoverCardContent><Text>Synthwave, all night.</Text></HoverCardContent>
+</HoverCard>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Hover Card](https://ui.shadcn.com/docs/components/hover-card) on the web, and React Native Reusables' [Hover Card](https://reactnativereusables.com/docs/components/hover-card) on native. Vinyl only changes styling and motion.

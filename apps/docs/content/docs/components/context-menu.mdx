@@ -1,0 +1,51 @@
+---
+title: Context Menu
+description: Menu opened by right-click (web) or long-press (native).
+---
+
+<Preview name="context-menu" />
+
+**Vinyl styling:** Retro-shadow panel that opens with a quick barn-door wipe.
+
+## Installation
+
+```bash
+npx shadcn@latest add @vinyl/context-menu
+```
+
+The `@vinyl` registry URL in `components.json` decides whether you get the web or the native version (see installation for [web](/docs/installation/web) / [native](/docs/installation/native)).
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+<ContextMenu>
+  <ContextMenuTrigger>Right-click the deck</ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem>Play</ContextMenuItem>
+    <ContextMenuItem variant="destructive">Eject</ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+<ContextMenu>
+  <ContextMenuTrigger><Text>Long-press the deck</Text></ContextMenuTrigger>
+  <ContextMenuContent>
+    <ContextMenuItem><Text>Play</Text></ContextMenuItem>
+    <ContextMenuItem variant="destructive"><Text>Eject</Text></ContextMenuItem>
+  </ContextMenuContent>
+</ContextMenu>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Same API as shadcn/ui's [Context Menu](https://ui.shadcn.com/docs/components/context-menu) on the web, and React Native Reusables' [Context Menu](https://reactnativereusables.com/docs/components/context-menu) on native. Vinyl only changes styling and motion.

@@ -1,0 +1,576 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vinyl-ui-native",
+  "homepage": "https://github.com/supmanyu/vinyl-ui",
+  "items": [
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "Vinyl theme (Uniwind)",
+      "description": "Night Drive / Sun-Faded Uniwind themes and the 80s palette. Remove any existing @layer theme block from global.css.",
+      "dependencies": [
+        "@vinyl-ui/tokens",
+        "@vinyl-ui/effects",
+        "react-native-reanimated",
+        "react-native-svg",
+        "@react-native-masked-view/masked-view"
+      ],
+      "css": {
+        "@import \"@vinyl-ui/tokens/native.css\"": {}
+      }
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "cn()",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/native/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "text",
+      "type": "registry:ui",
+      "title": "Text",
+      "description": "Themed Text with typography variants (from React Native Reusables).",
+      "dependencies": ["@rn-primitives/slot", "class-variance-authority"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "icon",
+      "type": "registry:ui",
+      "title": "Icon",
+      "description": "Lucide icon with className support (from React Native Reusables).",
+      "dependencies": ["lucide-react-native", "react-native-svg"],
+      "registryDependencies": ["@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/icon.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-only-animated-view",
+      "type": "registry:ui",
+      "title": "NativeOnlyAnimatedView",
+      "description": "Reanimated view that is a no-op on web (from React Native Reusables).",
+      "dependencies": ["react-native-reanimated"],
+      "files": [
+        {
+          "path": "registry/native/ui/native-only-animated-view.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Raised retro button; the thick border collapses on press.",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["@vinyl/theme", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Mono, uppercase status label.",
+      "dependencies": ["@rn-primitives/slot", "class-variance-authority"],
+      "registryDependencies": ["@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Panel with a thick border and retro shadow.",
+      "registryDependencies": ["@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text field with a cyan focus border.",
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Square hardware-style toggle.",
+      "dependencies": ["@rn-primitives/switch"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabs whose panels slide in.",
+      "dependencies": ["@rn-primitives/tabs", "react-native-reanimated"],
+      "registryDependencies": ["@vinyl/text", "@vinyl/native-only-animated-view"],
+      "files": [
+        {
+          "path": "registry/native/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal that powers on and off like a CRT.",
+      "dependencies": [
+        "@rn-primitives/dialog",
+        "lucide-react-native",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/native-only-animated-view"],
+      "files": [
+        {
+          "path": "registry/native/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glitch-text",
+      "type": "registry:ui",
+      "title": "Glitch Text",
+      "description": "Display heading with animated chromatic aberration.",
+      "dependencies": ["@vinyl-ui/effects"],
+      "registryDependencies": ["@vinyl/theme", "@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/glitch-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "test-pattern",
+      "type": "registry:ui",
+      "title": "Test Pattern",
+      "description": "SMPTE colour bars for empty, offline and loading states.",
+      "dependencies": ["@vinyl-ui/tokens"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/test-pattern.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "neon-tile",
+      "type": "registry:ui",
+      "title": "Neon Tile",
+      "description": "Sunset-gradient app-icon tile with a glowing gold rim and a shine sweep.",
+      "dependencies": [
+        "@vinyl-ui/effects",
+        "@vinyl-ui/tokens",
+        "class-variance-authority",
+        "react-native-svg"
+      ],
+      "registryDependencies": ["@vinyl/theme", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/neon-tile.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "wordmark",
+      "type": "registry:ui",
+      "title": "Wordmark",
+      "description": "Stacked, slanted multi-colour title lockup.",
+      "dependencies": ["@vinyl-ui/tokens", "class-variance-authority"],
+      "registryDependencies": ["@vinyl/theme", "@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/wordmark.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "A vertically stacked set of interactive headings that each reveal a section of content.",
+      "dependencies": [
+        "@rn-primitives/accordion",
+        "lucide-react-native",
+        "react-native-reanimated"
+      ],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Displays a callout for user attention.",
+      "dependencies": ["lucide-react-native"],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "A modal dialog that interrupts the user with important content and expects a response.",
+      "dependencies": [
+        "@rn-primitives/alert-dialog",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/button", "@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Displays content within a desired ratio.",
+      "dependencies": ["@rn-primitives/aspect-ratio"],
+      "files": [
+        {
+          "path": "registry/native/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "An image element with a fallback for representing the user.",
+      "dependencies": ["@rn-primitives/avatar"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "dependencies": ["@rn-primitives/checkbox", "lucide-react-native"],
+      "registryDependencies": ["@vinyl/icon"],
+      "files": [
+        {
+          "path": "registry/native/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "A control that allows the user to toggle between checked and not checked.",
+      "dependencies": ["@rn-primitives/collapsible"],
+      "files": [
+        {
+          "path": "registry/native/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Displays a menu to the user \u2014 such as a set of actions or functions \u2014 triggered by a button.",
+      "dependencies": [
+        "@rn-primitives/context-menu",
+        "lucide-react-native",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Displays a menu to the user \u2014 such as a set of actions or functions \u2014 triggered by a button.",
+      "dependencies": [
+        "@rn-primitives/dropdown-menu",
+        "lucide-react-native",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "For sighted users to preview content available behind a link.",
+      "dependencies": [
+        "@rn-primitives/hover-card",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Renders an accessible label associated with controls.",
+      "dependencies": ["@rn-primitives/label"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.",
+      "dependencies": [
+        "@rn-primitives/menubar",
+        "@rn-primitives/portal",
+        "lucide-react-native",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Displays rich content in a portal, triggered by a button.",
+      "dependencies": ["@rn-primitives/popover", "react-native-reanimated", "react-native-screens"],
+      "registryDependencies": ["@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+      "dependencies": ["@rn-primitives/progress", "react-native-reanimated"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of checkable buttons\u2014known as radio buttons\u2014where no more than one of the buttons can be checked at a time.",
+      "dependencies": ["@rn-primitives/radio-group"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Displays a list of options for the user to pick from\u2014triggered by a button.",
+      "dependencies": [
+        "@rn-primitives/select",
+        "lucide-react-native",
+        "react-native-reanimated",
+        "react-native-screens"
+      ],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Visually or semantically separates content.",
+      "dependencies": ["@rn-primitives/separator"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Use to show a placeholder while content is loading.",
+      "dependencies": ["react-native-reanimated"],
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Displays a form textarea or a component that looks like a textarea.",
+      "registryDependencies": ["@vinyl/utils"],
+      "files": [
+        {
+          "path": "registry/native/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "A two-state button that can be either on or off.",
+      "dependencies": ["@rn-primitives/toggle", "class-variance-authority"],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "A set of two-state buttons that can be toggled on or off.",
+      "dependencies": ["@rn-primitives/toggle-group", "class-variance-authority"],
+      "registryDependencies": ["@vinyl/icon", "@vinyl/text", "@vinyl/toggle"],
+      "files": [
+        {
+          "path": "registry/native/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "A popup that displays information related to an element when the element receives keyboard focus, the mouse hovers over it, or when it is pressed.",
+      "dependencies": ["@rn-primitives/tooltip", "react-native-reanimated", "react-native-screens"],
+      "registryDependencies": ["@vinyl/native-only-animated-view", "@vinyl/text"],
+      "files": [
+        {
+          "path": "registry/native/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

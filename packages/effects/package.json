@@ -1,0 +1,91 @@
+{
+  "name": "@vinyl-ui/effects",
+  "version": "0.1.0",
+  "description": "Analog, glitch and geometric effects (RGB split, film burn, scanlines, SMPTE wipes, neon draw, shine, stripe text) for React and React Native.",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supmanyu/vinyl-ui.git",
+    "directory": "packages/effects"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "tailwindcss",
+    "glitch",
+    "rgb-split",
+    "film-burn",
+    "smpte",
+    "retro",
+    "80s"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "react-native": {
+        "types": "./dist/native/index.d.ts",
+        "default": "./dist/native/index.js"
+      },
+      "types": "./dist/web/index.d.ts",
+      "default": "./dist/web/index.js"
+    },
+    "./effects.css": "./dist/effects.css",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check:pkg": "publint && attw --pack . --profile esm-only --exclude-entrypoints ./effects.css"
+  },
+  "dependencies": {
+    "@vinyl-ui/tokens": "workspace:^"
+  },
+  "peerDependencies": {
+    "react": ">=19",
+    "react-native": ">=0.81",
+    "react-native-reanimated": ">=4",
+    "react-native-svg": ">=15",
+    "@react-native-masked-view/masked-view": ">=0.3"
+  },
+  "peerDependenciesMeta": {
+    "react-native": {
+      "optional": true
+    },
+    "react-native-reanimated": {
+      "optional": true
+    },
+    "react-native-svg": {
+      "optional": true
+    },
+    "@react-native-masked-view/masked-view": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "jsdom": "^30.1.3",
+    "publint": "^0.3.25",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-native": "^0.88.0",
+    "react-native-reanimated": "^4.7.1",
+    "react-native-svg": "^15.16.0",
+    "tsdown": "^0.23.1",
+    "vitest": "^5.0.5",
+    "@react-native-masked-view/masked-view": "0.3.2"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

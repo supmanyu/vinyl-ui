@@ -1,0 +1,90 @@
+---
+title: Web
+description: Add Vinyl UI to a React app with Tailwind CSS v4 and shadcn/ui.
+---
+
+Vinyl UI works in any React app that shadcn/ui supports (Next.js, Vite, React Router, TanStack Start, Astro).
+
+<Steps>
+<Step>
+
+### Set up shadcn/ui
+
+If the project doesn't use shadcn/ui yet, initialise it. This sets up Tailwind CSS v4, `components.json` and `cn()`.
+
+```bash
+npx shadcn@latest init
+```
+
+</Step>
+<Step>
+
+### Register the `@vinyl` namespace
+
+Add the Vinyl UI web registry to `components.json`:
+
+<RegistrySetup platform="web" />
+
+</Step>
+<Step>
+
+### Install the theme
+
+```bash
+npx shadcn@latest add @vinyl/theme
+```
+
+This installs `@vinyl-ui/tokens` and `@vinyl-ui/effects`, adds their CSS imports to your global
+stylesheet, and replaces the shadcn colour variables with Night Drive (`.dark`) and Sun-Faded (`:root`).
+
+</Step>
+<Step>
+
+### Add components
+
+```bash
+npx shadcn@latest add @vinyl/button @vinyl/card @vinyl/dialog
+```
+
+Each component lands in `components/ui` and imports `cn()` from your utils alias.
+
+</Step>
+<Step>
+
+### Use dark mode by default
+
+Night Drive is the signature look. Put `class="dark"` on `<html>`, or set it as the default in your theme provider:
+
+```tsx title="app/layout.tsx"
+<ThemeProvider attribute="class" defaultTheme="dark">
+```
+
+</Step>
+</Steps>
+
+## Fonts
+
+The tokens reference **Space Grotesk** (`font-sans`), **Orbitron** (`font-display`) and **VT323**
+(`font-mono`), with system fallbacks. Load them however you like, for example with `next/font`:
+
+```tsx title="app/layout.tsx"
+import { Orbitron, Space_Grotesk, VT323 } from 'next/font/google';
+
+const sans = Space_Grotesk({ subsets: ['latin'], variable: '--font-sans' });
+const display = Orbitron({ subsets: ['latin'], variable: '--font-display' });
+const mono = VT323({ subsets: ['latin'], weight: '400', variable: '--font-mono' });
+```
+
+## Without the shadcn CLI
+
+Import the CSS yourself and use the effects directly:
+
+```css title="globals.css"
+@import 'tailwindcss';
+@import '@vinyl-ui/tokens/web.css'; /* palette + both themes + shadcn variable mapping */
+@import '@vinyl-ui/effects/effects.css'; /* rgb-split, film-burn, scanlines, animate-wipe-* */
+```
+
+```bash
+npm install @vinyl-ui/tokens @vinyl-ui/effects
+```

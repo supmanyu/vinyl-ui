@@ -1,0 +1,68 @@
+---
+title: Tabs
+description: Underlined tabs whose panels wipe in.
+---
+
+<Preview name="tabs" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/tabs
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/tabs
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+
+<Tabs defaultValue="a">
+  <TabsList>
+    <TabsTrigger value="a">Side A</TabsTrigger>
+    <TabsTrigger value="b">Side B</TabsTrigger>
+  </TabsList>
+  <TabsContent value="a">…</TabsContent>
+  <TabsContent value="b">…</TabsContent>
+</Tabs>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Text } from '@/components/ui/text';
+
+<Tabs value={tab} onValueChange={setTab}>
+  <TabsList>
+    <TabsTrigger value="a"><Text>Side A</Text></TabsTrigger>
+    <TabsTrigger value="b"><Text>Side B</Text></TabsTrigger>
+  </TabsList>
+  <TabsContent value="a">…</TabsContent>
+</Tabs>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+Panels animate each time they become active: a 350ms `bar-left` wipe on the web (override with `[--wipe-duration:…]`), a short `FadeInLeft` on native. Both respect reduced motion.

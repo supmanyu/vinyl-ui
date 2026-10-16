@@ -1,0 +1,51 @@
+---
+title: Motion & accessibility
+description: How Vinyl UI keeps glitch effects readable, safe and respectful of user settings.
+---
+
+Analog effects are loud by design. These rules keep them usable.
+
+## Reduced motion
+
+Every animated effect checks the user's reduced-motion setting:
+
+| Effect | Web (`prefers-reduced-motion: reduce`) | Native (`useReducedMotion()`) |
+| --- | --- | --- |
+| `animate-glitch` / `<RGBSplit animated>` | Animation removed; static split remains | Jitter off; static split remains |
+| `film-burn` / `<FilmBurn>` | Overlay stays still | Overlay stays still |
+| `animate-wipe-*` / `<SmpteWipe>` | Collapses to 1ms; `onEnd` still fires | Jumps to the end; `onEnd` still fires |
+| Dialog | Wipe collapses to 1ms | CRT power-on/off disabled; fade respects the system setting |
+| Tabs (native) | – | `FadeInLeft` respects the system setting |
+| `animate-draw` / `<NeonDraw>` | Collapses to 1ms; `onEnd` still fires | Jumps to the end; `onEnd` still fires |
+| `animate-shine` / `<Shine>` | Sweep hidden | Sweep not rendered |
+
+Because `SmpteWipe` still calls `onEnd`, flows that chain on a transition keep working.
+
+## Flashing (WCAG 2.3.1)
+
+Glitch bursts last about 0.3s every 4s, and shift small areas of text without large changes in
+luminance. Don't shorten `--glitch-duration` below `1s`, and never put `animate-glitch` on large
+full-screen surfaces.
+
+## Readability
+
+- Use `GlitchText` / `RGBSplit` for **short display text only**. The channel offsets lower legibility.
+- On the web, RGB split is a `text-shadow`, so the real text stays selectable and readable by screen readers.
+- On native, the two tinted copies are hidden from assistive tech (`aria-hidden`,
+  `importantForAccessibility="no-hide-descendants"`). `GlitchText` exposes one heading with its text as the label.
+- `StripeText` and `text-vice` can't meet contrast requirements by design. Use them only for display words and numerals.
+- Film burn, scanlines and shine are `pointer-events: none` overlays and are hidden from assistive tech.
+
+## Contrast
+
+Every `surface` / `surface-foreground` pair in both themes, plus `muted-foreground` on `background`,
+meets WCAG AA (4.5:1). A unit test enforces this. If you customise colours, run it again:
+
+```bash
+pnpm --filter @vinyl-ui/tokens test
+```
+
+## Focus
+
+Interactive web components show a 3px ring in the `ring` colour (cyan in Night Drive, ultraviolet in
+Sun-Faded) on `:focus-visible`.

@@ -1,0 +1,67 @@
+---
+title: RGB Split
+description: Chromatic aberration — offset red and blue channels, with optional glitch bursts.
+---
+
+<Preview name="rgb-split" />
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { RGBSplit } from '@vinyl-ui/effects';
+
+<h1 className="font-display text-5xl">
+  <RGBSplit intensity={3} animated>Chroma</RGBSplit>
+</h1>
+```
+
+Or use the Tailwind utilities directly:
+
+```html
+<h1 class="rgb-split rgb-split-3 animate-glitch inline-block">Chroma</h1>
+<button class="hover:rgb-split">Hover me</button>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+import { RGBSplit } from '@vinyl-ui/effects';
+
+<RGBSplit intensity={3} animated className="text-5xl font-black text-foreground">
+  Chroma
+</RGBSplit>
+```
+
+`className` and `style` are applied to each text layer. Pass text as `children`.
+
+</Tab>
+</Tabs>
+
+## Props
+
+<TypeTable
+  type={{
+    intensity: { type: 'number', default: '2', description: 'Channel offset in px.' },
+    animated: { type: 'boolean', default: 'false', description: 'Periodic glitch bursts. Off under reduced motion.' },
+    className: { type: 'string', description: 'Web: on the wrapping span. Native: on every Text layer.' },
+    style: { type: 'StyleProp<TextStyle>', description: 'Native only. Applied to every Text layer.' },
+  }}
+/>
+
+## Utilities (web)
+
+| Class | Effect |
+| --- | --- |
+| `rgb-split` | Red/blue text-shadow offset by `--rgb-split` (default 2px) |
+| `rgb-split-{n}` / `rgb-split-[3px]` | Set the offset |
+| `animate-glitch` | Slice-and-skew burst every `--glitch-duration` (4s). Use on inline-block or block elements |
+
+## How it works
+
+- **Web:** a two-colour `text-shadow`. The text stays a single selectable, accessible node.
+- **Native:** two absolutely positioned `Text` copies tinted `glitch-r` / `glitch-b` behind the real
+  text, moved by Reanimated on the UI thread. The copies are hidden from screen readers.

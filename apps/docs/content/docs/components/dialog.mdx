@@ -1,0 +1,75 @@
+---
+title: Dialog
+description: Modal that opens with a box wipe and switches off like a CRT.
+---
+
+<Preview name="dialog" />
+
+## Installation
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```bash
+npx shadcn@latest add @vinyl/dialog
+```
+
+</Tab>
+<Tab value="React Native">
+
+```bash
+npx shadcn@latest add @vinyl/dialog
+```
+
+Run it in a project whose `@vinyl` registry points at `/r/native` (see [installation](/docs/installation/native)).
+
+</Tab>
+</Tabs>
+
+## Usage
+
+<Tabs items={['Web', 'React Native']}>
+<Tab value="Web">
+
+```tsx
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline">Insert tape</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Be kind, rewind</DialogTitle>
+      <DialogDescription>This tape is at the end of side B.</DialogDescription>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+</Tab>
+<Tab value="React Native">
+
+```tsx
+// Requires <PortalHost /> at the app root.
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button variant="outline"><Text>Insert tape</Text></Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Be kind, rewind</DialogTitle>
+    </DialogHeader>
+  </DialogContent>
+</Dialog>
+```
+
+</Tab>
+</Tabs>
+
+## API
+
+- **Web:** the content opens with `animate-wipe-box` and closes with a reversed `barn-door-h` (they use different keyframes so Radix waits for the exit animation). The overlay has scanlines. Pass `showCloseButton={false}` to hide the ✕.
+- **Native:** a custom Reanimated entering/exiting animation scales a thin line open (CRT power-on), then collapses it on close. It's disabled under reduced motion.
