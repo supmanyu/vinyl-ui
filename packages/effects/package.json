@@ -1,6 +1,6 @@
 {
   "name": "@vinyl-ui/effects",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Analog, glitch and geometric effects (RGB split, film burn, scanlines, SMPTE wipes, neon draw, shine, stripe text) for React and React Native.",
   "license": "MIT",
   "type": "module",
